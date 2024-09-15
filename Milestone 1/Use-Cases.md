@@ -1,9 +1,17 @@
-# Use Case #1: Tom
+## Use Case #1: Meghan
+Check Wait Times
 
-# Use Case #2: Jordan
+## Use Case #2: Arden
+User Registration & Create a Profile: for registration login, logout, register, guest login; for create profile can have medical history and information, potentially medical insurance, emergency contact
 
-# Use Case #3: Meghan
+## Use Case #3: Konrad
+Undergo Virtual Triage: input symptoms, check urgency, capacity, location, patient profile & history
 
-# Use Case #4: Konrad
+## Use Case #4: Jordan
+Treatement Directions: suggested course of action (home remedy, visit general practitioner, doctor, ER, etc.), further virtual contact with medical professional or in-person medical followup
 
-# Use Case #5: Arden
+## Use Case #5: Meghan
+Notification to Go to Hospital: which hospital (based on location, urgency, wait times, etc.) and directions
+
+## Use Case #6: Tom
+Emergency Escalation
