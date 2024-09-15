@@ -8,7 +8,7 @@ User Registration & Create a Profile: for registration login, logout, register, 
 Undergo Virtual Triage: input symptoms, check urgency, capacity, location, patient profile & history
 
 ## Use Case #4: Jordan
-Treatement Directions: suggested course of action (home remedy, visit general practitioner, doctor, ER, etc.), further virtual contact with medical professional or in-person medical followup
+Treatment Directions: suggested course of action (home remedy, visit general practitioner, doctor, ER, etc.), further virtual contact with medical professional or in-person medical followup
 
 ## Use Case #5: Meghan
 Notification to Go to Hospital: which hospital (based on location, urgency, wait times, etc.) and directions
