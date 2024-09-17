@@ -48,3 +48,15 @@ Notification to Go to Hospital: which hospital (based on location, urgency, wait
 
 ## Use Case #6: Tom
 Emergency Escalation
+
+| **Use Case 6**           | **Emergency Escalation**                                                                                                                                       |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Description**        | Any patient that requires immediate medical attention due to their symptoms can have first responders dispatched to them through the app.           |
+| **Primary Actor**      | Patient                                                                                                                                          |
+| **Secondary Actors**   | Doctor, Nurses, First Responders                                                                                                                 |
+| **Assumptions**        | - The patient is logged into the app. <br> - The patient is sharing user data with the app. <br> - Local first responders are available.          |
+| **Steps**              | 1. Patient logs into MisterEd. <br> 2. Patient enters their symptoms in MisterEd. <br> 3. If the system detects life-threatening symptoms, it will contact first responders with the symptoms. <br> 4. If first responders are available, they can be dispatched to the user. <br> 5. Doctors and Nurses at the nearest hospital are notified of the patient’s symptoms and expected arrival. |
+| **Variations**         | 1. If the patient is not logged in, we will not contact first responders automatically, but give them the option to call first responders. <br> 2. If location services are not shared or the app cannot determine the location, we do not automatically dispatch but give the user the option to call first responders. |
+| **Non-Functional Requirements** | - **Security**: Patient data must comply with local privacy regulations (e.g., PIPEDA). <br> - **Performance**: Must escalate emergencies within 10 seconds. |
+| **Issues**             | - Handling incorrect or intentionally wrong data input by patients, or false positives in symptom detection. <br> - Legal concerns for automated emergency recommendations. |
+
