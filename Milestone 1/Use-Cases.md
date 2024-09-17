@@ -43,6 +43,25 @@ Undergo Virtual Triage: input symptoms, check urgency, capacity, location, patie
 ## Use Case #4: Jordan
 Treatment Directions: suggested course of action (home remedy, visit general practitioner, doctor, ER, etc.), further virtual contact with medical professional or in-person medical followup
 
+| **Use Case 04**         | Treatment Directions |
+|---|---|
+| **Primary Actors**                            | Patient, Mister ED Virtual Triage System |
+| **Secondary Actors (if needed)**              | Medical Professional                     |
+| **Use Case Description** | The system provides treatment directions after a virtual triage process. Recommendations include home remedies, visiting a general practitioner, contacting a doctor, or going to the emergency room. The system may suggest further virtual or in-person follow-ups. |
+| **Preconditions** | - The patient has registered and completed the virtual triage. <br> - The system is operational, and patient data has been inputted.|
+| **Postconditions** | - Patient receives treatment directions based on triage results. <br> - Recommendation for further virtual consultation or in-person follow-up.   |
+|**Main Flow (Steps)**
+| Step | Description                                                                                           |
+|1.| Patient completes the virtual triage questionnaire.                                                    |
+|2.| System analyzes patient input and assesses the patient's condition.                                    |
+|3.| System provides treatment directions (home remedy, GP visit, doctor, ER, etc.).                        |
+|4.| If necessary, system suggests further virtual contact or an in-person follow-up with a medical professional. |
+|**Alternate Flow**
+|2.1.| If the system cannot make a decision, it escalates the case to a human medical professional for review. |
+|**Exceptions**
+|| - Incomplete or inconsistent data leads to an error message requesting further details.                  |
+|| - System failure or technical issue prevents assessment, prompting the patient to retry later or seek immediate help. |
+
 ## Use Case #5: Meghan
 Notification to Go to Hospital: which hospital (based on location, urgency, wait times, etc.) and directions
 
