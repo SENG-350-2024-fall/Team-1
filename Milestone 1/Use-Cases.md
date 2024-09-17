@@ -56,7 +56,7 @@ Treatment Directions: suggested course of action (home remedy, visit general pra
 |2.| System analyzes patient input and assesses the patient's condition.                                    |
 |3.| System provides treatment directions (home remedy, GP visit, doctor, ER, etc.).                        |
 |4.| If necessary, system suggests further virtual contact or an in-person follow-up with a medical professional. |
-|**Alternate Flow**
+|**Variations**
 |2.1.| If the system cannot make a decision, it escalates the case to a human medical professional for review. |
 |**Exceptions**
 || - Incomplete or inconsistent data leads to an error message requesting further details.                  |
