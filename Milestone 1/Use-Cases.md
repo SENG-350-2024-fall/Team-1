@@ -54,6 +54,7 @@ Treatment Directions: suggested course of action (home remedy, visit general pra
 |**Exceptions**| - Incomplete or inconsistent data leads to an error message requesting further details. <br> - System failure or technical issue prevents assessment, prompting the patient to retry later or seek immediate help. |
 
 note: notification with queue based on priority, automatically adds them to queue based on symptoms after triage is completed if it's determined they should receive examination
+note: patient should have the option to remove themselves from the queue
  
 ## Use Case #5: Meghan
 Notification to Go to Hospital: which hospital (based on location, urgency, wait times, etc.) and directions
