@@ -53,6 +53,8 @@ Treatment Directions: suggested course of action (home remedy, visit general pra
 |**Variations**|2.1. If the system cannot make a decision, it escalates the case to a human medical professional for review. |
 |**Exceptions**| - Incomplete or inconsistent data leads to an error message requesting further details. <br> - System failure or technical issue prevents assessment, prompting the patient to retry later or seek immediate help. |
 
+note: notification with queue based on priority, automatically adds them to queue based on symptoms
+ 
 ## Use Case #5: Meghan
 Notification to Go to Hospital: which hospital (based on location, urgency, wait times, etc.) and directions
 
