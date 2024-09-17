@@ -1,5 +1,15 @@
 ## Use Case #1: Meghan
-Check Wait Times
+User checks wait times for hospitals. 
+
+| **Use Case**    | 1. Getting Emergency Department Wait Times |
+| --- | --- |
+| **Description** | Patient wants to know the wait time for a given hospital.|
+| **Assumptions** | The wait time is available for the given hospital (ie. Has been estimated and updated based on ER conditions).<br> The system is running.<br> User is logged in. |
+| **Actors**      | Patient (primary), Hospital wait time api|
+| **Steps**       | 1. Patient selects the look up wait time <br> 2. System prompts the patient to enter the name of the hospital <br> 3. Patient provides hospital name <br> 4. The system shows the wait time for the given hospital|
+| **Variations**  |  |
+| **Non-Functional**   |Availability: Wait time is available 99.9% of the time <br>Scalability: must be able to huddle multiple hospitals <br>Usability: the wait times should be easy to find regardless of how technical the user is. <br>Accessibility: the times should be displayed such that anyone can understand them. |
+| **Issues**      | How do we get the estimated wait time? How can we assure wait time is accurate? What gets displayed if we don’t have a wait time available? |
 
 ## Use Case #2: Arden
 User Registration & Create a Profile: for registration login, logout, register, guest login; for create profile can have medical history and information, potentially medical insurance, emergency contact
@@ -58,6 +68,15 @@ note: patient should have the option to remove themselves from the queue
  
 ## Use Case #5: Meghan
 Notification to Go to Hospital: which hospital (based on location, urgency, wait times, etc.) and directions
+| **Use Case**    | 5. ED visit time notification |
+| --- | --- |
+| **Description** | Patient gets notified when it is their turn to visit the ED.|
+| **Assumptions** | Patient is logged in to system<br>Patient has been triaged<br>Mister MD determined patient must visit a hospital<br>Patient has set a travel range in their profile/or in triage and can physically get to those hospitals.<br>Wait times are available for hospitals in range<br>Patient has allowed push notifications<br>System refers patients to the hospital that is closest to them(in their travel range) with the lowest wait time.<br> there is at least one Emergency department in the users travel range<br> User has allowed push notifications (text or call)|
+| **Actors**      | Patient (primary), text message/call api|
+| **Steps**       | 1.Patient selects log in<br> 2.System prompts patient to enter account credentials<br> 3.Patient provides account credentials<br> 4.System authenticates patient<br> 5.Patient selects notifications<br> 6.System displays notifications by recency.<br> 7.Patient sees notification that it is their turn to visit the ED at specified hospital|
+| **Variations**  | Patient receives push notification call or text that it is their turn to visit a specified hospital.  |
+| **Non-Functional**   |Availability: this service must be available 99.9% of the time so users are not waiting. indefinitely to be called to the ED<br>Scalability: must be able to handle multiple hospitals and patients <br>Usability: users should be able to find their notification <br>Recoverability: if the system crashes how do we regain the queue<br>Accessibility: everyone should be able to receive the notifications<br>Security: the notification should not contain more sensitive information than is needed and the notifications should go to the correct person. |
+| **Issues**      | What happens if a user doesn’t go to hospital when notified?<br>Can a person move down in priority if they have more serious conditions walking into the ER? How does that show? What If the notification has already gone out?|
 
 ## Use Case #6: Tom
 Emergency Escalation
