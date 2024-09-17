@@ -37,7 +37,7 @@ Undergo Virtual Triage: input symptoms, check urgency, capacity, location, patie
 | **Variations**  | N/A                                                                                                                                                                                                                                                          |
 | **Issues**      | Non-registered members should not be able to use the triage system. Otherwise, they would be required to provide medical records or connect health card to make the best estimation *during* a potentially emergency situation.                              |
 
-
+note: add option for patient to include photo
 
 ## Use Case #4: Jordan
 Treatment Directions: suggested course of action (home remedy, visit general practitioner, doctor, ER, etc.), further virtual contact with medical professional or in-person medical followup
@@ -53,7 +53,7 @@ Treatment Directions: suggested course of action (home remedy, visit general pra
 |**Variations**|2.1. If the system cannot make a decision, it escalates the case to a human medical professional for review. |
 |**Exceptions**| - Incomplete or inconsistent data leads to an error message requesting further details. <br> - System failure or technical issue prevents assessment, prompting the patient to retry later or seek immediate help. |
 
-note: notification with queue based on priority, automatically adds them to queue based on symptoms
+note: notification with queue based on priority, automatically adds them to queue based on symptoms after triage is completed if it's determined they should receive examination
  
 ## Use Case #5: Meghan
 Notification to Go to Hospital: which hospital (based on location, urgency, wait times, etc.) and directions
