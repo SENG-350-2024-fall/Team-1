@@ -5,4 +5,4 @@ Group Members:
 - Jordan Cowan, V00958142
 - Meghan Frese, V
 - Konrad Jasman, V
-- Arden Loewen, V
+- Arden Loewen, V00990977
