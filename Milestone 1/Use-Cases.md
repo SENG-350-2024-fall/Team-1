@@ -75,12 +75,7 @@ Notification to Go to Hospital: which hospital (based on location, urgency, wait
 | **Actors**      | Patient (primary), text message/call api|
 | **Steps**       | 1.Patient selects log in<br> 2.System prompts patient to enter account credentials<br> 3.Patient provides account credentials<br> 4.System authenticates patient<br> 5.Patient selects notifications<br> 6.System displays notifications by recency.<br> 7.Patient sees notification that it is their turn to visit the ED at specified hospital|
 | **Variations**  | Patient receives push notification call or text that it is their turn to visit a specified hospital.  |
-| **Non-Functional**   |Availability: this service must be available 99.9% of the time so users are not waiting. indefinitely to be called to the ED.
-<br>Scalability: must be able to handle multiple hospitals and patients 
-<br>Usability: users should be able to find their notification 
-<br>Recoverability: if the system crashes how do we regain the queue
-<br>Accessibility: everyone should be able to receive the notifications
-<br>Security: the notification should not contain more sensitive information than is needed and the notifications should go to the correct person. |
+| **Non-Functional**   |Availability: this service must be available 99.9% of the time so users are not waiting. indefinitely to be called to the ED<br>Scalability: must be able to handle multiple hospitals and patients <br>Usability: users should be able to find their notification <br>Recoverability: if the system crashes how do we regain the queue<br>Accessibility: everyone should be able to receive the notifications<br>Security: the notification should not contain more sensitive information than is needed and the notifications should go to the correct person. |
 | **Issues**      | What happens if a user doesn’t go to hospital when notified?<br>Can a person move down in priority if they have more serious conditions walking into the ER? How does that show? What If the notification has already gone out?|
 
 ## Use Case #6: Tom
