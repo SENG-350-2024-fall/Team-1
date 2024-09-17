@@ -1,5 +1,21 @@
 ## Use Case #1: Meghan
-Check Wait Times
+User Registration & Create a Profile: for registration login, logout, register, guest login; for create profile can have medical history and information, potentially medical insurance, emergency contact
+
+| **Use Case**    | 1. Wait times                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Description** | Patient wants to know the wait time for a given hospital                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Assumptions** | The wait time is available for the given hospital (ie. Has been estimated and updated based on ER conditions).
+The system is running.
+user is logged in.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| **Actors**      | Patient (primary), Hospital wait time api                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Steps**       | 1. Patient selects the look up wait time 2. System prompts the patient to enter the name of the hospital 3. Patient provides hospital name 4. The system shows the wait time for the given hospital
+ |
+ 
+| **Variations**  |  |
+| **Issues**      | How do we get the estimated wait time?
+How can we assure wait time is accurate?
+What gets displayed if we don’t have a wait time available? |
 
 ## Use Case #2: Arden
 User Registration & Create a Profile: for registration login, logout, register, guest login; for create profile can have medical history and information, potentially medical insurance, emergency contact
