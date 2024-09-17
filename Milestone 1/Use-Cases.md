@@ -4,13 +4,14 @@ Check Wait Times
 ## Use Case #2: Arden
 User Registration & Create a Profile: for registration login, logout, register, guest login; for create profile can have medical history and information, potentially medical insurance, emergency contact
 
+| **Use Case** | 2. User_login |
 | --- | --- |
-| **Use Case** | Use case identifier here |
-| **Description** | Description here |
-| **Assumptions** | Assumptions here |
-| **Actors** | Actors here |
-| **Steps** | Steps here |
-| **Issues** | Issues here |
+| **Description** | User logs in |
+| **Assumptions** | Is not logged in |
+| **Actors** | User (primary) |
+| **Steps** | 1. User enters their credentials and logs in \n 2. User is brought to the main page of the application |
+| **Variations** | **#1.** User logs in as guest |
+| **Issues** | Should a user log in before viewing application or start of as guest |
 
 ## Use Case #3: Konrad
 Undergo Virtual Triage: input symptoms, check urgency, capacity, location, patient profile & history
