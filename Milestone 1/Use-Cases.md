@@ -6,12 +6,23 @@ User Registration & Create a Profile: for registration login, logout, register, 
 
 | **Use Case** | 2. User_login |
 | --- | --- |
-| **Description** | User logs in |
+| **Description** | User logs in using their profile |
 | **Assumptions** | Is not logged in |
 | **Actors** | User (primary) |
-| **Steps** | 1. User enters their credentials and logs in__2. User is brought to the main page of the application |
-| **Variations** | **#1.** User logs in as guest |
-| **Issues** | Should a user log in before viewing application or start of as guest |
+| **Steps** | 1. User clicks "Log in with BC Services Card app" button <br>2. REPEAT <br>&nbsp;&nbsp;&nbsp;&nbsp;1.1 User gets prompted to pair their BC Services Card App with a six symbol code on their screen. <br>&nbsp;&nbsp;&nbsp;&nbsp;1.2 User enters six symbol code from BC Services Card App into the application. <br>UNTIL user inputs correct code **or** inputs incorrect code 3 times. <br>3. IF correct code THEN 3.1 User is brought to the main page of the application. <br>&nbsp;&nbsp;&nbsp;&nbsp;3.2 ELSE User is unable to log in and they must reset their BC Services Card App |
+| **Variations** | **#1.** User clicks "Log in as guest" |
+| **Issues** | Should a user log in before viewing application or start off as guest |
+
+| **Use Case** | 2.1 User_logout |
+| --- | --- |
+| **Description** | User logs in |
+| **Assumptions** | Is logged in |
+| **Actors** | User (primary) |
+| **Steps** | 1. User clicks the log out option on the application. <brl>2. User is logged out of their session
+| **Variations** | **#1.** User exits out of the application |
+| **Issues** | How does application process unfinished virtual triage processes? |
+
+I realized BC Services Card app is a thing and it has access to medical records.
 
 ## Use Case #3: Konrad
 Undergo Virtual Triage: input symptoms, check urgency, capacity, location, patient profile & history
