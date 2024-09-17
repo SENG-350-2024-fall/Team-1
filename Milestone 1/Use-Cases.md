@@ -37,7 +37,7 @@ Undergo Virtual Triage: input symptoms, check urgency, capacity, location, patie
 | **Variations**  | N/A                                                                                                                                                                                                                                                          |
 | **Issues**      | Non-registered members should not be able to use the triage system. Otherwise, they would be required to provide medical records or connect health card to make the best estimation *during* a potentially emergency situation.                              |
 
-note: add option for patient to include photo
+note: add option for patient to include photo, also add option to change emergency response and travel radius based on physical condition
 
 ## Use Case #4: Jordan
 Treatment Directions: suggested course of action (home remedy, visit general practitioner, doctor, ER, etc.), further virtual contact with medical professional or in-person medical followup
