@@ -9,7 +9,7 @@ User Registration & Create a Profile: for registration login, logout, register, 
 | **Description** | User logs in |
 | **Assumptions** | Is not logged in |
 | **Actors** | User (primary) |
-| **Steps** | 1. User enters their credentials and logs in \n 2. User is brought to the main page of the application |
+| **Steps** | 1. User enters their credentials and logs in__2. User is brought to the main page of the application |
 | **Variations** | **#1.** User logs in as guest |
 | **Issues** | Should a user log in before viewing application or start of as guest |
 
