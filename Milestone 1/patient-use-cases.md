@@ -1,0 +1,44 @@
+# Patient Use Cases and Diagram #
+
+## Patient Use Case Diagram ##
+
+<div hidden>
+  
+@startuml patientUCD
+left to right direction
+actor "Patient" as p
+rectangle "Mister ED" {
+  usecase "Log in" as UC1
+  usecase "Log out" as UC2
+  usecase "Modify medical history" as UC3
+  usecase "Edit profile" as UC4
+  usecase "Modify emergency contact" as UC4.1
+  usecase "Find nearest ED" as UC5
+  usecase "See ED wait times" as UC6
+  usecase "Undergo virtual triage" as UC7
+  usecase "Contact emergency contact" as UC8
+  usecase "View ED Queue" as UC9
+  usecase "Front of ED Queue notification" as UC10
+  usecase "Remove self from queue" as UC11
+}
+p --> UC1
+p --> UC2
+p --> UC3
+p --> UC4
+p --> UC4.1
+p --> UC5
+p --> UC6
+p --> UC7
+p --> UC8
+p --> UC9
+p --> UC10
+p --> UC11
+@enduml
+  
+</div>
+
+![](patientUCD.svg)
+
+## Patient Use Case Descriptions ##
+
+Use case textual descriptions here
