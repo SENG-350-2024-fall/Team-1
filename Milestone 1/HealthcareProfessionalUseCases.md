@@ -56,19 +56,6 @@
 
 ---
 
-## Use Case #5: Edit Wait Times
-
-| **Use Case**    | 5 Edit Wait Times |
-| --- | --- |
-| **Description** | A healthcare professional updates the estimated wait times for patients in the urgent care queue. |
-| **Actors**      | Healthcare professionals. |
-| **Assumptions** | - Users have access to modify wait times based on current circumstances. |
-| **Steps**       | 1. User selects the wait time management option.<br>2. User inputs updated wait times.<br>3. System saves the new wait times.<br>4. System displays the updated wait times to users. |
-| **Variations**  | - Users can set different wait times for different categories of care. |
-| **Non-Functional** | - Updates should occur in real-time to reflect current conditions. |
-| **Issues**      | - Inaccurate wait times could frustrate patients and affect care quality. |
-
----
 
 ## Use Case #6: Add Patient to Queue
 
@@ -123,19 +110,5 @@
 | **Variations**  | - If the patient is already assigned, a notification is displayed. |
 | **Non-Functional** | - The assignment process should be completed in under 2 seconds. |
 | **Issues**      | - Misassignment could occur if proper checks are not in place. |
-
----
-
-## Use Case #10: Notify Emergency Contact
-
-| **Use Case**    | 10 Notify Emergency Contact |
-| --- | --- |
-| **Description** | The system notifies a designated emergency contact for a patient regarding their care status or updates. |
-| **Actors**      | Healthcare professionals, system. |
-| **Assumptions** | - The patient has provided emergency contact information. |
-| **Steps**       | 1. User selects the patient requiring notification.<br>2. User initiates the contact notification process.<br>3. System retrieves the emergency contact information.<br>4. System sends the notification (via SMS, email, etc.).<br>5. System confirms the notification was sent. |
-| **Variations**  | - The user can customize the message content before sending. |
-| **Non-Functional** | - Notifications should be sent within 5 seconds of initiation. |
-| **Issues**      | - Failure to notify due to incorrect contact details could lead to communication breakdowns. |
 
 ---
