@@ -1,4 +1,4 @@
-# Milestone 1
+# Milestone 1 Description
 
 ## Introduction
 This is the first milestone for your course project. The project consists of four milestones. It is done in groups of 5 (or 4) students. (Groups have been formed in the first lab.)
