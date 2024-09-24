@@ -34,7 +34,7 @@
 | --- | --- |
 | **Description** | A healthcare professional modifies an existing triage report to update patient information or symptoms. |
 | **Actors**      | Healthcare professionals. |
-| **Assumptions** | - The user has permission to edit reports. |
+| **Assumptions** | - The user has permission to edit reports.<br>  - The patient has been triaged and their report is available in the system.|
 | **Steps**       | 1. User selects the triage report to edit.<br>2. User makes necessary changes.<br>3. User saves the updated report.<br>4. System confirms the changes. |
 | **Variations**  | - Changes can be reverted if made within a specific time frame. |
 | **Non-Functional** | - Changes should be saved in under 2 seconds. |
