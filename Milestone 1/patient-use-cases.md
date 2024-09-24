@@ -2,7 +2,7 @@
 
 ## Patient Use Case Diagram ##
 
-![patientUCD.iuml](http://www.plantuml.com/plantuml/proxy?cache=no&src=./patientUCD.iuml)
+![patientUCD.svg]
 
 ## Patient Use Case Descriptions ##
 
