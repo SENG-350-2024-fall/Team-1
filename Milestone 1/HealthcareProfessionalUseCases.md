@@ -63,10 +63,10 @@
 | --- | --- |
 | **Description** | A healthcare professional adds a new patient to the urgent care queue for treatment. |
 | **Actors**      | Healthcare professionals. |
-| **Assumptions** | - The patient is registered and has completed triage. |
+| **Assumptions** | - The patient has walked into the ED and has not been triaged in Mister ED yet |
 | **Steps**       | 1. User selects the option to add a patient.<br>2. User enters the patient’s details.<br>3. System adds the patient to the queue.<br>4. System confirms the addition. |
 | **Variations**  | - If the patient is already in the queue, a notification is displayed. |
-| **Non-Functional** | - The process should complete in under 5 seconds. |
+| **Non-Functional** |  |
 | **Issues**      | - Duplicate entries could occur if not properly checked. |
 
 ---
@@ -81,7 +81,7 @@
 | **Steps**       | 1. User selects the patient whose records need updating.<br>2. User inputs new information or updates existing records.<br>3. User saves the changes.<br>4. System confirms the updates. |
 | **Variations**  | - Users can attach documents or images related to the patient’s care. |
 | **Non-Functional** | - Record updates should be processed in under 3 seconds. |
-| **Issues**      | - Data loss or corruption during the save process. |
+| **Issues**      | - Data loss or corrupted during the save process. |
 
 ---
 
