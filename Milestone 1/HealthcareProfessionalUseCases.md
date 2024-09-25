@@ -57,7 +57,7 @@
 ---
 
 
-## Use Case #6: Add Patient to Queue
+## Use Case #5: Add Patient to Queue
 
 | **Use Case**    | 6 Add Patient to Queue |
 | --- | --- |
@@ -71,7 +71,7 @@
 
 ---
 
-## Use Case #7: Add Patient Records
+## Use Case #6: Add Patient Records
 
 | **Use Case**    | 7 Add Patient Records |
 | --- | --- |
@@ -85,28 +85,14 @@
 
 ---
 
-## Use Case #8: Remove Patient from Queue When They Are Being Seen
-
-| **Use Case**    | 8 Remove Patient from Queue When They Are Being Seen |
-| --- | --- |
-| **Description** | A healthcare professional removes a patient from the queue when they begin treatment. |
-| **Actors**      | Healthcare professionals. |
-| **Assumptions** | - The patient has arrived and is ready for treatment. |
-| **Steps**       | 1. User identifies the patient in the queue.<br>2. User selects the option to remove the patient.<br>3. System updates the queue and removes the patient.<br>4. System confirms the removal. |
-| **Variations**  | - The system may ask for confirmation before finalizing the removal. |
-| **Non-Functional** | - The update should occur in real-time to reflect accurate queue status. |
-| **Issues**      | - Potential delays in updating the queue could lead to confusion. |
-
----
-
-## Use Case #9: Assign Patient from Queue to Themselves
+## Use Case #7: Assign Patient from Queue to Themselves
 
 | **Use Case**    | 9 Assign Patient from Queue to Themselves |
 | --- | --- |
 | **Description** | A healthcare professional assigns a patient from the queue to themselves for treatment. |
 | **Actors**      | Healthcare professionals. |
 | **Assumptions** | - The healthcare professional is authorized to take on patients from the queue. |
-| **Steps**       | 1. User selects a patient from the queue.<br>2. User assigns the patient to themselves.<br>3. System updates the patient's status and queue.<br>4. System confirms the assignment. |
+| **Steps**       | 1. User selects a patient from the queue.<br>2. User assigns the patient to themselves.<br>3. System updates the patient's status and removed them from queue.<br>4. System confirms the assignment. |
 | **Variations**  | - If the patient is already assigned, a notification is displayed. |
 | **Non-Functional** | - The assignment process should be completed in under 2 seconds. |
 | **Issues**      | - Misassignment could occur if proper checks are not in place. |
