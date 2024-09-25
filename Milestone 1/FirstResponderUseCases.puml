@@ -6,28 +6,20 @@ actor "First Responder / EMS" as fr
 
 rectangle MisterEd { 
   usecase "View patient details" as UC1
-  usecase "Symptoms" as UC2
-  usecase "Medical History" as UC3
-  usecase "Check patient notifications" as UC4
-  usecase "Perform check-in with patient" as UC5
-  usecase "Access patient GPS location" as UC6
-  usecase "Update ED staff" as UC7
-  usecase "Patient status" as UC8
-  usecase "Patient arrival time" as UC9
-  usecase "Transfer patient " as UC10
-  usecase "Check ED load/wait times" as UC11
+  usecase "Check patient notifications" as UC2
+  usecase "Perform check-in with patient" as UC3
+  usecase "Access patient GPS location" as UC4
+  usecase "Update ED staff with patient details" as UC5
+  usecase "Transfer patient to ED care" as UC6
+  usecase "Check ED load/wait times" as UC7
 }
 
 fr --> UC1
-UC1 ..> UC2: extends
-UC1 ..> UC3: extends
+fr --> UC2
+fr --> UC3
 fr --> UC4
 fr --> UC5
 fr --> UC6
 fr --> UC7
-UC7 ..> UC8: extends
-UC7 ..> UC9: extends
-fr --> UC10
-fr --> UC11
 
 @enduml
