@@ -1,4 +1,4 @@
-# Milestone 1
+# Milestone 1 Description
 
 ## Introduction
 This is the first milestone for your course project. The project consists of four milestones. It is done in groups of 5 (or 4) students. (Groups have been formed in the first lab.)
@@ -39,6 +39,13 @@ Identify the actors using the application.
 Identify and model the use cases in a use case diagram. Document use cases textually using this guideline and template. (You should have at least as many use cases as you have group members. Otherwise, your system is likely too simple to get full marks.)
 
 We recommend using PlantUML with GitHub integration. https://github.com/jgraph/drawio-github
+
+Instructions:
+
+- Create 4 to 5 use case diagrams (depending on the number of group members), each containing 5 to 6 use cases.
+- Divide the use case diagrams according to the primary actors.
+- If there are 4 to 5 primary actors, there should be one use case diagram per actor, ensuring that each diagram corresponds to a group member.
+- Additionally, provide textual descriptions for each of the use cases.
 
 ## 3. Contributions
 Summarize the contributions made by each team member. (Point out the sections / parts that each group member was "most responsible" for.)
