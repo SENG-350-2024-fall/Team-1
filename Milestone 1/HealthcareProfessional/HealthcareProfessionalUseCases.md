@@ -98,3 +98,14 @@ This use case tackles the "Pop" function of the queue. A healthcare worker who i
 | **Issues**      | - Misassignment could occur if proper checks are not in place. |
 
 ---
+## Use Case #8: Log Out
+This usecase covers when a healthcare worker is going to be away from their machine for a while and will not be accessing Mister MD they can log out. This will protect from unauthorized users using their signed in credentials to get access to protected records. 
+| **Use Case**    | 6. Log Out |
+| --- | --- |
+| **Description** | The in-person medical professional logs out from the MisterED system. |
+| **Actors**      | Healthcare professionals.|
+| **Assumptions** | - The healthcare professional is authenticated and logged in with valid credentials (username and password).<br> - The system is operational and accessible. |
+| **Steps**       | 1. User locates the logout button on their main page/dashboard.<br>2. User clicks logout.<br>3. System logs the the user out and displays a successful logout message and returns them to the landing/login page |
+| **Variations**  | - If the user is inactive for an hour the system will automatically log out the user. |
+| **Non-Functional** | - System should respond within 10 seconds for successful logout, any logout response greater than 30 seconds should timeout and prompt the user to retry logout.<br> - System should display a successful logout message so the user can ensure their device is not left logged in with their elevated privileges. |
+| **Issues**      | - Not logging the user out when they are away from the system could allow for unauthorized access.  |
