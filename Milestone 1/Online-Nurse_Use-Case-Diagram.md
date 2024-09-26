@@ -1,11 +1,14 @@
-PlantUML Use Case Diagram
-Actor: Online Nurse
+## PlantUML Use Case Diagram - Actor: Online Nurse
 
-[image]
+![image](https://github.com/user-attachments/assets/7abe9309-ffc1-48e2-8083-c4f9e02f4b11)
+
+[You can view the UCD here also](//www.plantuml.com/plantuml/png/RP5FIyD04CNlyoaUkRVOF-t1WnGqWg2r5ErzIIPn8DsLsGbQnEzkKXBfYeU5USplzmwpcsXEhJqsr71bi02L-irGYd9X4Zovme8YUv9ehFaTddqZdh5jDN865-7xYNhS-RfX_99VH40RkN2HaJs6MlnPUBsz-hC8hGsR6INIGVW3EsV2tl3Wgw37BeInPvx0BogkvX4VaCKbaSV2DSuO5f3liLC9AdOQq6NIjWqcrMbiwus3HB7E6_0L_Ljz8ToBHiEUutlm9UlWhOc-YSvNmsHoqvyZZVCqBgXxc4xxUObhyAUnBsCAhTAuJkECDftI_V8F)
 
 
-PlantUML Code:
 
+## PlantUML Code:
+
+```
 @startuml
 left to right direction
 actor "MisterED Online Nurse" as nurse
@@ -40,3 +43,4 @@ nurse --> UC6
 nurse --> UC1
 
 @enduml
+```
