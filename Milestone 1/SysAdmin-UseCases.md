@@ -56,28 +56,3 @@
 | **Variations**     | - Admin needs to recover data from a backup                                                                                                                                                                                                               |
 | **Non-Functional** | - Backups must be reliable, regularly scheduled and with no data loss<br>- Backup operations should minimally impact system functionality<br>- Backups must be stored securely and encrypted.                                                             |
 | **Issues**         | - Possible corruption during backups                                                                                                                                                                                                                      |
-
-```UML
-@startuml
-left to right direction
-
-actor "System Admin" as SysAdmin
-
-package Sys_Admin_Roles{
-    SysAdmin --> (Provide IT Support)
-    SysAdmin --> (Manage Server Updates) 
-    SysAdmin --> (Modify Existing Records)
-    SysAdmin --> (Data Backup)
-
-	(Provide IT Support) ..> (Manage User Accounts): "includes" 
-	(Provide IT Support) ..> (Modify Existing Records): "includes" 
-
-}
-
-@enduml
-```
-
-## Use Case Diagram
-Model System Admin use cases
-
-![[SysAdmin_UML.png]]
