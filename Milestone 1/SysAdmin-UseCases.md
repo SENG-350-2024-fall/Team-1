@@ -80,4 +80,4 @@ package Sys_Admin_Roles{
 ## Use Case Diagram
 Model System Admin use cases
 
-![[Pasted image 20240926105804.png]]
+![[SysAdmin_UML.png]]
