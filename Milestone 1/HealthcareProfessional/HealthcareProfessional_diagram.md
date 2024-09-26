@@ -1,46 +1,34 @@
 ## PlantUML Use Case Diagram - Actor: Online Nurse
-
-![image](https://github.com/user-attachments/assets/7abe9309-ffc1-48e2-8083-c4f9e02f4b11)
-
-[You can view the UCD here also](//www.plantuml.com/plantuml/png/RP5FIyD04CNlyoaUkRVOF-t1WnGqWg2r5ErzIIPn8DsLsGbQnEzkKXBfYeU5USplzmwpcsXEhJqsr71bi02L-irGYd9X4Zovme8YUv9ehFaTddqZdh5jDN865-7xYNhS-RfX_99VH40RkN2HaJs6MlnPUBsz-hC8hGsR6INIGVW3EsV2tl3Wgw37BeInPvx0BogkvX4VaCKbaSV2DSuO5f3liLC9AdOQq6NIjWqcrMbiwus3HB7E6_0L_Ljz8ToBHiEUutlm9UlWhOc-YSvNmsHoqvyZZVCqBgXxc4xxUObhyAUnBsCAhTAuJkECDftI_V8F)
-
+![image](https://github.com/user-attachments/assets/a8fa3538-115a-4c24-8569-20ae6b042f73)
 
 
 ## PlantUML Code:
 
 ```
 @startuml
+actor "Healthcare Professional" as HP
 left to right direction
-actor "MisterED Online Nurse" as nurse
-rectangle MisterED {
-
-  usecase "Login" as UC0
-  usecase "Logout" as UC1
-
-
-  usecase "View Patient Information" as UC2
-
-  usecase "Triage Patient" as UC3
-  usecase "Escalate to ER Priority" as UC4
-
-  usecase "Notify Patient to Visit ER" as UC5
-
-  usecase "Escalate Patient to First Responder" as UC6
-
+rectangle "Mister Ed System" {
+    usecase "Log In" as UC1
+    usecase "View Patient Symptoms/Triage Report" as UC2
+    usecase "Edit Triage Report" as UC3
+    usecase "View Urgent Care Queue" as UC4
+    usecase "Add Patient to Queue" as UC5
+    usecase "Add Patient Records" as UC6
+    usecase "Assign Patient from queue to self" as UC7
+    usecase "Log out" as UC8
+   
 }
 
-nurse --> UC0
+HP --> UC1
+HP --> UC2
+HP --> UC4
+HP --> UC5
+HP --> UC6
+HP --> UC7
+HP --> UC8
 
-nurse --> UC2
 
-nurse --> UC3
-UC3 ..> UC4 : extends
-
-nurse --> UC5
-
-nurse --> UC6
-
-nurse --> UC1
-
+UC2 <.. UC3 : <<extend>>
 @enduml
 ```
