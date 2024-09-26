@@ -91,7 +91,7 @@ This use case tackles the "Pop" function of the queue. A healthcare worker who i
 | --- | --- |
 | **Description** | A healthcare professional assigns a patient from the queue to themselves for treatment. |
 | **Actors**      | Healthcare professionals. |
-<| **Assumptions** | - The healthcare professional is authorized to take on patients from the queue.<br> - The user is logged in.  |
+| **Assumptions** | - The healthcare professional is authorized to take on patients from the queue.<br> - The user is logged in.  |
 | **Steps**       | 1. User selects the queue tab. <br> 2. User selects a patient from the queue.<br>3. User assigns the patient to themselves.<br>4. System updates the patient's status and removed them from queue.<br>5. System confirms the assignment. |
 | **Variations**  | - If the patient is already assigned, a notification is displayed. |
 | **Non-Functional** | - The assignment process should be completed in under 30 seconds. |
