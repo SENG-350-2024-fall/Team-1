@@ -1,0 +1,25 @@
+@startuml
+
+left to right direction
+
+actor "First Responder / EMS" as fr
+
+rectangle MisterEd { 
+  usecase "View patient details" as UC1
+  usecase "Check patient notifications" as UC2
+  usecase "Perform check-in with patient" as UC3
+  usecase "Access patient GPS location" as UC4
+  usecase "Update ED staff with patient details" as UC5
+  usecase "Transfer patient to ED care" as UC6
+  usecase "Check ED load/wait times" as UC7
+}
+
+fr --> UC1
+fr --> UC2
+fr --> UC3
+fr --> UC4
+fr --> UC5
+fr --> UC6
+fr --> UC7
+
+@enduml

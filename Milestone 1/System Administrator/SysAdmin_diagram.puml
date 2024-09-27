@@ -1,0 +1,17 @@
+@startuml
+left to right direction
+
+actor "System Admin" as SysAdmin
+
+package Sys_Admin_Roles{
+    SysAdmin --> (Provide IT Support)
+    SysAdmin --> (Manage Server Updates) 
+    SysAdmin --> (Modify Existing Records)
+    SysAdmin --> (Data Backup)
+
+	(Provide IT Support) ..> (Manage User Accounts): "includes" 
+	(Provide IT Support) ..> (Modify Existing Records): "includes" 
+
+}
+
+@enduml
