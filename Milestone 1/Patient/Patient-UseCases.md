@@ -2,7 +2,7 @@
 
 ## Patient Use Case Diagram ##
 
-![patientUCD.svg]
+![alt text](PatientUCD.png "PatientUCD")
 
 ## Patient Use Case Descriptions ##
 
