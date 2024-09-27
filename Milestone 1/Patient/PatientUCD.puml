@@ -1,0 +1,30 @@
+@startuml patientUCD
+left to right direction
+actor "Patient" as p
+rectangle "MisterED" {
+  usecase "Log in" as UC1
+  usecase "Log out" as UC2
+  usecase "Modify medical history" as UC3.1
+  usecase "Edit profile" as UC3
+  usecase "Modify emergency contact" as UC3.2
+  usecase "Find nearest ED" as UC5
+  usecase "See ED wait times" as UC6
+  usecase "Undergo virtual triage" as UC7
+  usecase "Contact emergency contact" as UC7.1
+  usecase "View ED Queue" as UC8
+  usecase "Front of ED Queue notification" as UC8.1
+  usecase "Remove self from queue" as UC8.2
+}
+p --> UC1
+p --> UC2
+p --> UC3
+UC3 <.. UC3.1: "<< extends >>"
+UC3 <.. UC3.2: "<< extends >>"
+p --> UC5
+p --> UC6
+p --> UC7
+UC7 <.. UC7.1: "<< extends >>"
+p --> UC8
+UC8 <.. UC8.1: "<< extends >>"
+UC8 <.. UC8.2: "<< extends >>"
+@enduml
