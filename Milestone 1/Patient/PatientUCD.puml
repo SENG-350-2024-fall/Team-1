@@ -1,7 +1,7 @@
 @startuml patientUCD
 left to right direction
 actor "Patient" as p
-rectangle "Mister ED" {
+rectangle "MisterED" {
   usecase "Log in" as UC1
   usecase "Log out" as UC2
   usecase "Modify medical history" as UC3
