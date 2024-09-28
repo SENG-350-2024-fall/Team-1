@@ -1,8 +1,8 @@
 ## PlantUML Use Case Diagram - Actor: Online Nurse
 
-![image](https://github.com/user-attachments/assets/7abe9309-ffc1-48e2-8083-c4f9e02f4b11)
+![image](https://github.com/user-attachments/assets/59b507f2-be20-45bc-a1de-2267e485d885)
 
-[You can view the UCD here also](//www.plantuml.com/plantuml/png/RP5FIyD04CNlyoaUkRVOF-t1WnGqWg2r5ErzIIPn8DsLsGbQnEzkKXBfYeU5USplzmwpcsXEhJqsr71bi02L-irGYd9X4Zovme8YUv9ehFaTddqZdh5jDN865-7xYNhS-RfX_99VH40RkN2HaJs6MlnPUBsz-hC8hGsR6INIGVW3EsV2tl3Wgw37BeInPvx0BogkvX4VaCKbaSV2DSuO5f3liLC9AdOQq6NIjWqcrMbiwus3HB7E6_0L_Ljz8ToBHiEUutlm9UlWhOc-YSvNmsHoqvyZZVCqBgXxc4xxUObhyAUnBsCAhTAuJkECDftI_V8F)
+[You can view the UCD here also](//www.plantuml.com/plantuml/png/RP5HImCn3CVVyod2tZVSvlOWunZe2OBECNJlvIvt1cwj93bqYD_Tw-Xa5HyA_PFVBwJfMis9zOSEEceCBQ1m-sPOir1b73ouoeBWw8dLICexVFOTUy9DBqeZT8e-tY3YphSTuI_v1O3OArLE2KUFeML_4bvlh_uKGc-fCeLCsZDzuDOPapTyy4sGWujJ9NgMmI_2hgKpdf3v9L5gvJfd5DzPxd0h78JjcD3hhDic63V7SxTex5dP1Y_X2_YlzQLmpwA6EzBtu6kIv2q1lW5EMyFnk8ZhoECiZtCO3gucapWYtk1gHPz6ljQYoC557fTvd0Ai1sluwXy0)
 
 
 
@@ -34,7 +34,7 @@ nurse --> UC0
 nurse --> UC2
 
 nurse --> UC3
-UC3 ..> UC4 : extends
+UC3 <.. UC4 : <<extends>>
 
 nurse --> UC5
 
