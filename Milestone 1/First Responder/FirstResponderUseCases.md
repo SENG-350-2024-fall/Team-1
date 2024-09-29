@@ -25,7 +25,7 @@ This use case is to ensure that the first responders are notified of urgent pati
 
 ## Use Case #3: Perform check-in with patient
 
-The first responder checks in with the patient to confirm their current condition and determine further steps. They can care to the patients needs or if necessary transport them to the ED.
+The first responder checks in with the patient to confirm their current condition and determine further steps. They can consider specific care needs of the patient before transporting them to the ED.
 
 | **Use Case**    | 3 Perform check-in with patient |
 | --- | --- |
@@ -52,7 +52,7 @@ In the case that a patient is non-responsive they can access the patients GPS lo
 
 ## Use Case #5: Update ED staff with patient details
 
-If the first responders have to transport the patient to the ED they can use MisterED to update the ED staff of their arrival time and the status of the patient.
+This use case allows first responders to update the ED staff of their arrival time and status of the patient when they are transporting the patient and treating the patient.
 
 | **Use Case**    | 5 Update ED staff with patient details |
 | --- | --- |
@@ -65,7 +65,7 @@ If the first responders have to transport the patient to the ED they can use Mis
 
 ## Use Case #6: Transfer patient to ED care
 
-Upon arrival at the hospital the first responders transfers the patient as well as their information to the ED staff. This ensures that the ED staff have all relevant information to care for the patient.
+Upon arrival at the hospital the first responders transfers the patient as well as their information to the ED staff. This ensures that the ED staff have all relevant information to care for the patient. Once patient is trasfered to ED staff, first responders should no longer have access to patient files.
 
 | **Use Case**    | 6 Transfer patient |
 | --- | --- |
@@ -82,7 +82,7 @@ The first responders should be able to check the current load and wait times ad 
 | **Use Case**    | 7 Check ED load/wait times |
 | --- | --- |
 | **Description** | First responders should be able to check the load and wait times at nearby EDs to determine the best destination for the patient. |
-| **Actors**      | First responder, Nurse, Doctor |
+| **Actors**      | First responder |
 | **Assumptions** | - ED systems are accurately reporting their load.<br>- Data is accessible to first responders. |
 | **Steps**       | 1. First responder checks ED load through the system.<br>2. First responder selects the ED based on load and wait times. |
 | **Variations**  | #2 First responder may want to select a different ED depending on the situation (ie may travel slightly further for a lesser wait time) |
