@@ -16,4 +16,6 @@
 - 
 
 ## Arden Loewen, V00990977
-- 
+- Wrote textual descriptions for patient use cases
+- Created use case diagram for patient use cases
+- Reviewed blank
