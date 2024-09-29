@@ -33,7 +33,7 @@ The first responder checks in with the patient to confirm their current conditio
 | **Actors**      | First responder, patient |
 | **Assumptions** | - Reliable communication with the patient.<br>- Patient is conscious and able to provide information. |
 | **Steps**       | 1. First responder initiates contact.<br>2. First responder collects additional information from the patient. |
-| **Variations**  | #2. Patient is unresponsive, and first responder follows alternative emergency protocols. |
+| **Variations**  | - Patient is unresponsive, and first responder follows alternative emergency protocols. |
 | **Non-Functional** | - ACCESSIBILITY: The check-in process must be quick and easy (5 minutes to hand over the patient).<br>- SECURITY: All communication must be encrypted. |
 | **Issues**      | - Patient may be unresponsive or unable to provide necessary information to provide a thorough check. |
 
@@ -47,7 +47,7 @@ In the case that a patient is non-responsive they can access the patients GPS lo
 | **Actors**      | First responder, patient |
 | **Assumptions** | - The patient has location sharing enabled.<br>- GPS services are operational. |
 | **Steps**       | 1. First responder opens GPS tracking.<br>2. First responder verifies patient’s location. |
-| **Variations**  | 4a. GPS data may be unavailable (poor connection, patient doesn't have their location shared). |
+| **Variations**  | - GPS data may be unavailable (poor connection, patient doesn't have their location shared). |
 | **Non-Functional** | - ACCURACY: GPS must be precise within 100 meters.<br>- TIMELINESS: Location data must update in real-time. |
 
 ## Use Case #5: Update ED staff with patient details
@@ -60,7 +60,7 @@ This use case allows first responders to update the ED staff of their arrival ti
 | **Actors**      | First responder, Nurse, Doctor |
 | **Assumptions** | - Reliable communication between first responders and ED staff. |
 | **Steps**       | 1. First responder updates patient status in the system.<br>2. ED staff review updated details and prepare for the patient's arrival. |
-| **Variations**  | #5. ED staff may request additional information based on patient’s critical status in order to prepare for their arrival. |
+| **Variations**  | - ED staff may request additional information based on patient’s critical status in order to prepare for their arrival. |
 | **Non-Functional** | - RELIABILITY: Data must transfer without interruption.<br>- TIMELINESS: Updates should arrive instantly for timely decision-making. |
 
 ## Use Case #6: Transfer patient to ED care
@@ -85,5 +85,5 @@ The first responders should be able to check the current load and wait times ad 
 | **Actors**      | First responder |
 | **Assumptions** | - ED systems are accurately reporting their load.<br>- Data is accessible to first responders. |
 | **Steps**       | 1. First responder checks ED load through the system.<br>2. First responder selects the ED based on load and wait times. |
-| **Variations**  | #2 First responder may want to select a different ED depending on the situation (ie may travel slightly further for a lesser wait time) |
+| **Variations**  | - First responder may want to select a different ED depending on the situation (ie may travel slightly further for a lesser wait time) |
 | **Non-Functional** | - ACCURACY: Wait times needs to be accurate so first responders can make the appropriate decision. |
