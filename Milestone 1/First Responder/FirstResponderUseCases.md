@@ -87,3 +87,29 @@ The first responders should be able to check the current load and wait times ad 
 | **Steps**       | 1. First responder checks ED load through the system.<br>2. First responder selects the ED based on load and wait times. |
 | **Variations**  | - First responder may want to select a different ED depending on the situation (ie may travel slightly further for a lesser wait time) |
 | **Non-Functional** | - ACCURACY: Wait times needs to be accurate so first responders can make the appropriate decision. |
+
+## Use Case #8: Log In
+
+The first responder needs to be able to log in in order to use application
+
+| **Use Case**    | 8 Log In |
+| --- | --- |
+| **Description** | A first responder accesses the MisterEd system to authenticate their identity and gain access to the patient data |
+| **Actors**      | First responder |
+| **Assumptions** | - First responder has valid credentials. <br> - The system is operational and accessible  |
+| **Steps**       | 1. First responder navigates to the login page. <br> 2. First responder selects the First Responder Portal. <br> 3. First responder enters their credentials. <br> 4. First responder is granted access to system if authenticated |
+| **Variations**  | - If authentication fails, the user is prompted to retry or reset their password. |
+| **Non-Functional** | - The system should respond within 2 seconds for successful login.<br>- Secure encryption of user credentials must be maintained. |
+
+## Use Case #8: Log Out
+
+The first responder needs to be able to log out when done using system
+
+
+| **Use Case**    | 9 Log Out |
+| --- | --- |
+| **Description** | The First Responder logs out from the MisterED system. |
+| **Actors**      | First responder |
+| **Assumptions** | - The First Responder is authenticated and logged in with valid credentials (username and password).<br> - The system is operational and accessible. |
+| **Steps**       | 1. User locates the logout button on their main page/dashboard.<br>2. User clicks logout.<br>3. System logs the the user out and displays a successful logout message and returns them to the landing/login page |
+| **Variations**  | - If the user is inactive for an hour the system will automatically log out the user. |
