@@ -8,6 +8,7 @@ package Sys_Admin_Roles{
     SysAdmin --> (Manage Server Updates) 
     SysAdmin --> (Modify Existing Records)
     SysAdmin --> (Data Backup)
+    SysAdmin --> (Restore Data from Backup)
 
 	(Provide IT Support) ..> (Manage User Accounts): "includes" 
 	(Provide IT Support) ..> (Modify Existing Records): "includes" 
