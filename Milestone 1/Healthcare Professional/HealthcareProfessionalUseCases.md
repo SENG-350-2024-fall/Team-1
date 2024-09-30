@@ -1,7 +1,7 @@
 
 
 ## Use Case #1: Log In (Authenticate as a Healthcare Professional)
-This usecase specifies how an in-person healthcare professional can gain access the healthcare portal side of the Mister ED system. They must authenticate themselves suffiently as once they have access to the system they will be able to see patient information. 
+This usecase specifies how an in-person healthcare professional can gain access the healthcare portal side of the Mister ED system. They must be logged in to access the healthcare provider view. 
 | **Use Case**    | 1 Log In (Authenticate as a Healthcare Professional) |
 | --- | --- |
 | **Description** | A healthcare professional accesses the Mister Ed system to authenticate their identity and gain access to patient information and system functionalities. |
@@ -24,7 +24,7 @@ This use case outlines how a healthcare worker can use the triage report Mister 
 | **Steps**       | 1. User navigates to the urgent care queue tab <br> 2.User selects a patient from the queue.<br>2. System retrieves the patient’s triage report.<br>3. User reviews the symptoms and triage details. |
 | **Variations**  | - If the report is not available, a notification is displayed. |
 | **Non-Functional** | - The system should load the report within 10 seconds. |
-| **Issues**      | - Incomplete or inaccurate reports may lead to misjudgments. <br> - Inability to access the report will lead to inefficiencies |
+| **Issues**      | - Incomplete or inaccurate reports may lead to misinformed decisions. <br> - Inability to access the report will lead to inefficiencies |
 
 ---
 
@@ -78,7 +78,7 @@ This use case aims to maintain an updated patient records. Once a patient has be
 | **Description** | A healthcare professional adds a patient's medical records in the system. |
 | **Actors**      | Healthcare professionals. |
 | **Assumptions** | - The user has the appropriate permissions (i.e. The user is the patient's doctor/nurse) to add patient records. |
-| **Steps**       | 1. User selects their patient whose records needs to be added.<br>2. User selects add record and type of record. <br> 3. User inputs new information records.<br>4. User saves the changes.<br>.5 System displays a summary of the report to be revised and prompts user to confirm.<br> 6. User confirms <br> 7. System saves and confirms the updates. |
+| **Steps**       | 1. User selects their patient whose records needs to be added.<br>2. User selects add record and type of record. <br> 3. User inputs new information records.<br>4. User saves the changes.<br>5. System displays a summary of the report to be revised and prompts user to confirm.<br> 6. User confirms <br> 7. System saves and confirms the updates. |
 | **Variations**  | - Users can attach documents or images related to the patient’s care.<br> If user does not confirm report they are brought back to the editing screen with the data they inputed restored. |
 | **Non-Functional** | - Record updates should be processed in under 3 seconds. |
 | **Issues**      | - Data loss or corrupted during the save process. |
