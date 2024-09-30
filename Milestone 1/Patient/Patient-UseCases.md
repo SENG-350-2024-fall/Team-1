@@ -44,9 +44,9 @@
 | --------------- | ----------------------------------------------------------------------------------------------------------------- |
 | **Description** | Patient modifies their medical history, such as conditions or allergies.                                           |
 | **Assumptions** | Patient is logged in.                                                                 |
-| **Actors**      | Patient (primary)                                                                                                 |
-| **Steps**       | 1. Patient selects "Edit profile" option.<br>2. Patient chooses "Modify medical history" and updates relevant information.<br>3. System saves changes. |
-| **Issues**      | None                                                                                                              |
+| **Actors**      | Patient (primary), System Administrator                                                                                                 |
+| **Steps**       | 1. Patient selects "Edit profile" option.<br>2. Patient chooses "Modify medical history" and requests a change to their medical history. An appointment is scheduled with a doctor.<br>3. Doctor submits medical history revision to System Admin. |
+| **Issues**      | - Appointment with a doctor means a change in medical history anyways, meaning no matter what Patient medical history will be changed.<br> - Doctor doesn't have to be an ED doctor.                                                                                                              |
 
 ### UC3.2: Modify emergency contact
 
@@ -84,8 +84,8 @@
 | --------------- | ---------------------------------------------------------------------------------------------------- |
 | **Description** | Patient undergoes a virtual triage process to assess the urgency of their condition.                  |
 | **Assumptions** | Patient is logged in.                         |
-| **Actors**      | Patient (primary)                                                                                    |
-| **Steps**       | 1. Patient selects "Undergo virtual triage" option.<br>2. System asks patient questions to assess their condition.<br>3. System provides triage result. |
+| **Actors**      | Patient (primary), Online Nurse                                                                                   |
+| **Steps**       | 1. Patient selects "Undergo virtual triage" option.<br>2. Patient waits for Online Nurse to provide online triage.<br>3. After online triage, Online Nurse places Patient into queue for the nearest ED. |
 | **Issues**      | None                                                                                                 |
 
 ### UC7.1: Contact emergency contact
@@ -114,8 +114,8 @@
 | --------------- | ---------------------------------------------------------------------------------------------------- |
 | **Description** | Patient receives a notification when they are at the front of the ED queue.                           |
 | **Assumptions** | Patient is in the ED queue.                                                                           |
-| **Actors**      | Patient (primary)                                                                                    |
-| **Steps**       | 1. System monitors the ED queue.<br>2. System sends notification to patient's cell via SMS when patient is at the front of the queue. |
+| **Actors**      | Patient (primary), Online Nurse                                                                                    |
+| **Steps**       | 1. System monitors the ED queue. Once Patient reaches front of queue, wait for Online Nurse<br>2. IF Online Nurse takes more than 15 minutes THEN 2.1 System sends notification to patient's cell via SMS.<br> ELSE 2.2 Online Nurse sends notification to patient's cell via SMS. |
 | **Issues**      | None                                                                                                 |
 
 ### UC8.2: Remove self from queue
