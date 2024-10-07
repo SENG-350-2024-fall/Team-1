@@ -1,8 +1,9 @@
 @startuml
 package "MisterED System" {
-    [User Interface (UI)] as UI
+    [GUI] as UI
     [Triage and Queue System] as Triage
-    [Medical Information Database] as DB
+    database "Medical Information Database" as DB
+    database "User Database" as UserDB
     [Notification System] as Notify
     [User Account Management] as AccountMgmt
     [Backup and Maintenance System] as Backup
@@ -20,11 +21,10 @@ UI --> AccountMgmt : "Manage accounts"
 Triage --> DB : "Store triage reports"
 Triage --> Notify : "Send queue updates"
 Triage --> FirstResponder : "Escalate emergency cases"
-Notify --> FirstResponder : "Notify of emergency"
 FirstResponder --> DB : "Access patient data"
 FirstResponder --> GPS : "Get patient location"
-AccountMgmt --> Backup : "Backup user data"
+AccountMgmt --> UserDB : "Manage user data"
 DB --> Backup : "Backup medical data"
-GPS --> UI : "Patient shares location"
+UserDB --> Backup : "Backup user data"
 
 @enduml
