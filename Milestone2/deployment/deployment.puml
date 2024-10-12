@@ -1,0 +1,67 @@
+@startuml deployment-MrED
+
+'cloud components'
+cloud "BC Public Health DB" as publicDB {
+    component "Provincial Health Number" as PHN
+    component "Patient Records" as publicRecords
+    component "API" as api
+}
+
+'main nodes'
+node "Hospital Systems" as systems {
+    component "Hospital Staff" as staff
+    component "Online Nurse" as onlineNurse
+    component "Hospital Workstations" as workstations
+    database "Hospital Database" as DB {
+        [Patient Records] as records
+        [Staff Records] as staffRecords
+        [ED Waiting List] as EDList
+    }
+}
+
+node "Central Server" as server {
+    component "System Admin" as sysadmin
+    database "Central Database" as centralDB {
+        [Load Balancer] as balancer
+        [Health Records] as healthRecords
+        [User Data] as userData
+    }
+}
+
+node "User Devices" as devices {
+    node "Mobile App" as mobileApp {
+        [GPS Location] as mobileGPS
+        [Symptom Checker] as mobileSymptomChecker
+        [Wait Time Check] as mobileWaitTime
+    }
+    node "Web App" as webApp {
+        [Symptom Checker] as webSymptomChecker
+        [Wait Time Check] as webWaitTime
+    }
+    
+    'Shared components between Mobile and Web Apps'
+    'GPS Location is only guaranteed on mobile devices'
+    component "Patient Login" as userLogin
+    component "Staff Login" as staffLogin
+    component "Provide Recommendation" as recommendation
+    component "Call" as call
+    component "Chat" as chat
+}
+
+'Define relationships'
+devices --> server : Secure External Connection
+server --> systems : Internal Network
+server --> publicDB : Secure API Connection
+systems --> publicDB : Secure Data Exchange
+
+userLogin --> centralDB : Authenticate
+staffLogin --> centralDB : Authenticate
+mobileSymptomChecker --> centralDB : Query
+webSymptomChecker --> centralDB : Query
+recommendation --> centralDB : Fetch Data
+mobileWaitTime --> EDList : Check
+webWaitTime --> EDList : Check
+call --> onlineNurse : Connect
+chat --> onlineNurse : Message
+
+@enduml

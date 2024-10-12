@@ -1,0 +1,154 @@
+@startchen
+
+entity FirstResponder {
+  Name
+  ID <<key>>
+  Position
+  Location
+  OnCallStatus
+}
+
+entity OnlineNurse {
+  Name
+  ID <<key>>
+  Position
+  ShiftSchedule
+  Available
+}
+
+entity HealthcareProfessional {
+  Name
+  ID <<key>>
+  Position
+  Specialization
+  ShiftSchedule
+  OnCallStatus
+  Username
+  Password
+}
+
+entity Patient {
+  Name
+  ID <<key>>
+  HealthCareCardNumber
+  Location
+  Gender
+  Birthdate
+  Occupation
+  InEDQueue
+  CurrentPriority
+}
+
+entity SystemAdmin {
+  Name
+  ID <<key>>
+  Position
+  ManagesHospitalResources
+  SchedulesStaff
+}
+
+entity Symptom <<weak>> {
+  Symptom_Info
+}
+
+entity HealthRecords <<weak>> {
+  Patient_ID <<key>>
+  Previous_Conditions
+  Ongoing_Conditions
+  Weight
+  Age
+  Genetic_Conditions 
+  Allergies
+  Prescriptions
+  GeneralPractitioner
+}
+
+entity Hospital {
+  Name
+  ID <<key>>
+  Location
+  EstimatedWaitTime
+  PhoneNumber
+  Capacity
+}
+
+entity MedicalRecord {
+  RecordID <<key>>
+  FileName
+  FileSize
+  FileType
+  LastUpdated
+  DateCreated
+}
+
+entity TriageReport <<weak>> {
+  ReportID <<key>>
+  ReportContent
+  DateCreated
+}
+
+relationship exhibitsSymptoms {
+}
+
+relationship hasHealthRecords {
+}
+
+relationship createsTriageReport {
+}
+
+relationship treatsPatient {
+}
+
+relationship triagesPatient {
+}
+
+relationship assistsPatient {
+}
+
+relationship employedAt {
+}
+
+relationship inEDQueue {
+}
+
+relationship hasMedicalRecord {
+}
+
+relationship includesTriageReport {
+}
+
+Patient -1- exhibitsSymptoms
+exhibitsSymptoms -N- Symptom
+
+Patient -1- hasHealthRecords
+hasHealthRecords -1- HealthRecords
+
+OnlineNurse -N- createsTriageReport
+createsTriageReport -1- TriageReport
+Patient -1- createsTriageReport
+
+HealthcareProfessional -N- treatsPatient
+treatsPatient -N- Patient
+
+OnlineNurse -N- triagesPatient
+triagesPatient -N- Patient
+
+FirstResponder -N- assistsPatient
+assistsPatient -N- Patient
+
+HealthcareProfessional -N- employedAt
+OnlineNurse -N- employedAt
+FirstResponder -N- employedAt
+SystemAdmin -N- employedAt
+employedAt -1- Hospital
+
+Patient -N- inEDQueue
+inEDQueue -1- Hospital
+
+Patient -1- hasMedicalRecord
+hasMedicalRecord -N- MedicalRecord
+
+MedicalRecord -1- includesTriageReport
+includesTriageReport -N- TriageReport
+
+@endchen
