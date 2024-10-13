@@ -17,9 +17,7 @@ entity OnlineNurse {
 }
 
 entity HealthcareProfessional {
-  Name
-  ID <<key>>
-  Position
+
   Specialization
   ShiftSchedule
   OnCallStatus
@@ -29,39 +27,27 @@ entity HealthcareProfessional {
 
 entity Patient {
   Name
-  ID <<key>>
+  PHN <<key>>
   HealthCareCardNumber
   Location
   Gender
   Birthdate
   Occupation
-  InEDQueue
-  CurrentPriority
+HealthRecords
+queuePosition
 }
 
 entity SystemAdmin {
   Name
   ID <<key>>
   Position
-  ManagesHospitalResources
-  SchedulesStaff
+Schedule
 }
 
 entity Symptom <<weak>> {
   Symptom_Info
 }
 
-entity HealthRecords <<weak>> {
-  Patient_ID <<key>>
-  Previous_Conditions
-  Ongoing_Conditions
-  Weight
-  Age
-  Genetic_Conditions 
-  Allergies
-  Prescriptions
-  GeneralPractitioner
-}
 
 entity Hospital {
   Name
@@ -72,14 +58,7 @@ entity Hospital {
   Capacity
 }
 
-entity MedicalRecord {
-  RecordID <<key>>
-  FileName
-  FileSize
-  FileType
-  LastUpdated
-  DateCreated
-}
+
 
 entity TriageReport <<weak>> {
   ReportID <<key>>
@@ -90,8 +69,10 @@ entity TriageReport <<weak>> {
 relationship exhibitsSymptoms {
 }
 
-relationship hasHealthRecords {
+relationship provideTechSupport {
+supportTicket
 }
+
 
 relationship createsTriageReport {
 }
@@ -100,6 +81,7 @@ relationship treatsPatient {
 }
 
 relationship triagesPatient {
+recommendation
 }
 
 relationship assistsPatient {
@@ -108,29 +90,17 @@ relationship assistsPatient {
 relationship employedAt {
 }
 
-relationship inEDQueue {
-}
-
-relationship hasMedicalRecord {
-}
-
-relationship includesTriageReport {
-}
-
 Patient -1- exhibitsSymptoms
 exhibitsSymptoms -N- Symptom
 
-Patient -1- hasHealthRecords
-hasHealthRecords -1- HealthRecords
-
-OnlineNurse -N- createsTriageReport
-createsTriageReport -1- TriageReport
+OnlineNurse -1- createsTriageReport
+createsTriageReport -N- TriageReport
 Patient -1- createsTriageReport
 
 HealthcareProfessional -N- treatsPatient
 treatsPatient -N- Patient
 
-OnlineNurse -N- triagesPatient
+OnlineNurse -1- triagesPatient
 triagesPatient -N- Patient
 
 FirstResponder -N- assistsPatient
@@ -142,13 +112,9 @@ FirstResponder -N- employedAt
 SystemAdmin -N- employedAt
 employedAt -1- Hospital
 
-Patient -N- inEDQueue
-inEDQueue -1- Hospital
-
-Patient -1- hasMedicalRecord
-hasMedicalRecord -N- MedicalRecord
-
-MedicalRecord -1- includesTriageReport
-includesTriageReport -N- TriageReport
-
+SystemAdmin -1- provideTechSupport
+provideTechSupport -N- Patient
+provideTechSupport -N- OnlineNurse
+provideTechSupport -N- HealthcareProfessional
+provideTechSupport -N- FirstResponder
 @endchen
