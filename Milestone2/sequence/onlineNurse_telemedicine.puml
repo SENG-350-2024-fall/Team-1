@@ -1,0 +1,41 @@
+' Online Nurse Schedules Telemedicine Appointment with Staff
+@startuml
+actor OnlineNurse
+
+participant System as TelemedicineSystem
+participant PatientQueue
+participant TriageReport
+participant Scheduler
+participant Staff 
+participant Patient
+
+
+OnlineNurse -> TelemedicineSystem: login(username, password)
+activate TelemedicineSystem
+TelemedicineSystem -> OnlineNurse: authenticate()
+deactivate TelemedicineSystem
+
+OnlineNurse -> PatientQueue: popNextPatient()
+activate PatientQueue
+PatientQueue -> OnlineNurse: returnPatientDetails(patient)
+deactivate PatientQueue
+
+OnlineNurse -> TriageReport: reviewTriageReport(patient)
+activate TriageReport
+TriageReport -> OnlineNurse: displayTriageReport(symptoms, history)
+deactivate TriageReport
+
+OnlineNurse -> Staff: checkDoctorAvailability(patient)
+activate Staff
+Staff -> OnlineNurse: returnAvailableDoctor(doctor)
+deactivate Staff
+
+OnlineNurse -> Scheduler: scheduleTelemedicineAppointment(patient, date, doctor)
+activate Scheduler
+Scheduler -> Patient: NotifyAppointmentScheduled(doctor, date)
+Scheduler -> Staff: NotifyAppointmentScheduled(patient, date)
+Scheduler -> OnlineNurse: ConfirmAppointmentAdded()
+deactivate Scheduler
+
+
+@enduml
