@@ -1,0 +1,33 @@
+ 
+' Nurse Edits Patient’s Triage Report
+@startuml
+actor Nurse
+participant Login
+participant Hospital
+participant TriageReportFile
+
+
+Nurse -> Login: login(username, password, StaffId)
+activate Login
+Login -> Nurse: autenticate()
+deactivate Login
+
+Nurse -> Hospital: popPatientFromQueue()
+activate Hospital
+Hospital -> Nurse: return(Patient)
+deactivate Hospital
+
+Nurse -> TriageReportFile: requestFileAccess(patient)
+activate TriageReportFile
+TriageReportFile -> Nurse: return (triageFile)
+Nurse -> TriageReportFile: updateReport(triageFile)
+TriageReportFile --> Nurse: confirmUpdate()
+
+deactivate TriageReportFile
+
+
+
+@enduml
+
+
+ 
