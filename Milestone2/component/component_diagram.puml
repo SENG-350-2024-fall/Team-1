@@ -7,24 +7,25 @@ package "MisterED System" {
     [Notification System] as Notify
     [User Account Management] as AccountMgmt
     [Backup and Maintenance System] as Backup
+    [First Responder Interface] as FirstResponder
+    [Authentication Service] as UserAuth
 }
 
-[BC Services Card Authentication] as Auth
-[First Responder Interface] as FirstResponder
+[BC Services Card Authentication] as PatientAuth
 [GPS Service] as GPS
 
-UI --> Auth : "User login"
-UI --> Triage : "Input symptoms, view queue"
-UI --> Notify : "Send notifications to patients"
-UI --> DB : "View/update patient records"
-UI --> AccountMgmt : "Manage accounts"
-Triage --> DB : "Store triage reports"
-Triage --> Notify : "Send queue updates"
-Triage --> FirstResponder : "Escalate emergency cases"
-FirstResponder --> DB : "Access patient data"
-FirstResponder --> GPS : "Get patient location"
-AccountMgmt --> UserDB : "Manage user data"
-DB --> Backup : "Backup medical data"
-UserDB --> Backup : "Backup user data"
+UI -(0- PatientAuth : "Patient login"
+UI -(0- UserAuth : "User login"
+UI -(0- Triage : "Input symptoms, view queue"
+UI -(0- AccountMgmt : "Manage accounts"
+UI -(0- Notify : "Send notifications to patients"
+Triage -(0- DB : "Store triage reports"
+Triage -(0- Notify : "Send queue updates"
+Triage -(0- FirstResponder : "Escalate emergency cases"
+FirstResponder -(0- DB : "Access patient data"
+FirstResponder -(0- GPS : "Get patient location"
+AccountMgmt -(0- UserDB : "Manage user data"
+DB -(0- Backup : "Backup medical data"
+UserDB -(0- Backup : "Backup user data"
 
 @enduml
