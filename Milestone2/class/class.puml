@@ -1,175 +1,178 @@
 @startuml
 class Person {
-    - NameLast: String
-    - NameFirst: String
-    - NameMiddle: String
-    - RegistrationDate: Date
-    - PhoneNumber: String
-    - Email: String
+    -NameLast: String
+    -NameFirst: String
+    -NameMiddle: String
+    -RegistrationDate: Date
+    -PhoneNumber: String
+    -Email: String
 
-    + updateContactInfo(phone: String, email: String): void
-    + logout(): void
-    + Notify(message: String): void
+    +updateContactInfo(phone: String, email: String): void
+    +logout(): void
+    +Notify(message: String): void
 }
 
 class Patient {
-    - Location: String
-    - Home: String
-    - Allergies: List<String>
-    - GeneralPractitioner: String
-    - Gender: String
-    - Birthdate: Date
-    - /Age: int
-    - Prescriptions: List<String>
-    - EmergencyContact: Person
-    - Occupation: String
-    - HealthCareCardNumber: String
-    - CurrentCareProviders: List<Staff>
-    - InEDQueue: Boolean
-    - CurrentPriority: int
-    - Appointment: Date
-    - EDsInRange: List<Hospital>
-    - TriageReport: TriageReportFile
-    - MedicalHistory: List<PatientFile>
+    #Location: String
+    #Home: String
+    +Allergies: List<String>
+    -GeneralPractitioner: String
+    +Gender: String
+    #Birthdate: Date
+    +/Age: int
+    -Prescriptions: List<String>
+    #EmergencyContact: Person
+    +Occupation: String
+    -HealthCareCardNumber: String
+    #CurrentCareProviders: List<Staff>
+    +InEDQueue: Boolean
+    +CurrentPriority: int
+    +Appointment: Date
+    #EDsInRange: List<Hospital>
+    #TriageReport: TriageReportFile
+    #MedicalHistory: List<PatientFile>
     
-    + login(healthCareCardNumber: String): Boolean
-    + updateAllergies(allergies: List<String>): void
-    + viewMedicalHistory(): List<PatientFile>
-    + updateEmergencyContact(contact: Person): void
-    + createTriageReport(symptoms: List<String>): TriageReportFile
-    + scheduleTelemedicineAppointment(staff: Staff, date: Date): Boolean
-    + getPriority(): int
-    + getMedications(): List<String> 
-    + getAllergies(): List<String> 
-    + createPatientFile(file: PatientFile): Boolean
-    + assignPriority(priority: int): void
+    +login(healthCareCardNumber: String): Boolean
+    +updateAllergies(allergies: List<String>): void
+    +viewMedicalHistory(): List<PatientFile>
+    +updateEmergencyContact(contact: Person): void
+    +createTriageReport(symptoms: List<String>): TriageReportFile
+    +scheduleTelemedicineAppointment(staff: Staff, date: Date): Boolean
+    +getPriority(): int
+    +getMedications(): List<String>
+    +getAllergies(): List<String>
+    +createPatientFile(file: PatientFile): Boolean
+    +assignPriority(priority: int): void
 }
 
 class Staff {
-    - ShiftSchedule: List<String>
-    - OnCallStatus: Boolean
-    - Username: String
-    - Password: String
-    - EDId: List<String>
-    - Available: Boolean 
+    #ShiftSchedule: List<String>
+    #OnCallStatus: Boolean
+    +Username: String
+    -Password: String
+    +EDId: List<String>
+    +Available: Boolean 
     
-    + login(username: String, password: String, departmentId: int): Boolean
-    + viewShiftSchedule(): List<String>
-    + updateShiftSchedule(schedule: List<String>): void
-    + viewAssignedPatients(): List<Patient>
-    + assignPatientToCare(patientId: int): Patient
-    + removePatientFromCare(patientId: int): void
-    + setAvailability(available: Boolean): void
-    + getAvailability(): Boolean
-    + updateDepartment(newDepartment: int): void
+    +login(username: String, password: String, departmentId: int): Boolean
+    +viewShiftSchedule(): List<String>
+    +updateShiftSchedule(schedule: List<String>): void
+    +viewAssignedPatients(): List<Patient>
+    +assignPatientToCare(patientId: int): Patient
+    +removePatientFromCare(patientId: int): void
+    +setAvailability(available: Boolean): void
+    +getAvailability(): Boolean
+    +updateDepartment(newDepartment: int): void
 }
 
 class Doctor {
-    - Specialty: List<String>
-    - CurrentPatients: List<Patient>
+    +Specialty: List<String>
+    #CurrentPatients: List<Patient>
 
-    + orderScan(scanType: String, patient: Patient): PatientFile
+    +orderScan(scanType: String, patient: Patient): PatientFile
 }
 
 class Nurse {
-    - Specialty: List<String>
-    - CurrentPatients: List<Patient>
-
+    +Specialty: List<String>
+    #CurrentPatients: List<Patient>
 }
 
 class OnlineNurse {
-    - CurrentPatient: Patient
-    - PatientsToCall: List<Patient> 
+    #CurrentPatient: Patient
+    #PatientsToCall: List<Patient> 
     
-    + getNextPatient(): Patient
+    +getNextPatient(): Patient
 }
 
 class EMT {
-    - Location: String
-    - CurrentPatient: Patient
+    +Location: String
+    +CurrentPatient: Patient
     
-    + dispatchToPatient(patient: Patient): void
-    + getClosestED(): Hospital
+    +dispatchToPatient(patient: Patient): void
+    +getClosestED(): Hospital
 }
 
 class Admin {
-    - Username: String
-    - Password: String
-    - Permissions: List<Strings>
+    +Username: String
+    -Password: String
+    +Permissions: List<String>
 }
 
 class Hospital {
-    - Location: String
-    - EstimatedWaitTime: String
-    - PhoneNumber: String
-    - Capacity: int
-    - EDQueue: List<Patient>
+    +Location: String
+    +EstimatedWaitTime: String
+    +PhoneNumber: String
+    +Capacity: int
+    #EDQueue: List<Patient>
     
-    + updateCapacity(newCapacity: int): void
-    + updateWaitTime(newWaitTime: String): void
-    + getQueue(): List<Patient>
-    + removePatientFromQueue(patient: Patient): void
-    + getWaitTime(): String
-    + addPatientToQueue(patient: Patient): List<Patient>
+    +updateCapacity(newCapacity: int): void
+    +updateWaitTime(newWaitTime: String): void
+    +getQueue(): List<Patient>
+    +removePatientFromQueue(patient: Patient): void
+    +getWaitTime(): String
+    +addPatientToQueue(patient: Patient): List<Patient>
 }
 
 class MedicalRecord {
-    - FileName: String
-    - FileSize: Double
-    - FileType: String
-    - LastUpdated: Date
-    - DateCreated: Date
-    - Patient: Patient
+    +FileName: String
+    +FileSize: Double
+    +FileType: String
+    +LastUpdated: Date
+    +DateCreated: Date
+    +Patient: Patient
 
-    + updateFile(updatedFile: PatientFile): void
-    + viewFileDetails(): String
+    +updateFile(updatedFile: PatientFile): void
+    +viewFileDetails(): String
 }
 
 class TriageReportFile {
-    - ReportContent: String
-    - Symptoms: List<String>
+    +ReportContent: String
+    +Symptoms: List<String>
 
-    + viewReport(): Image
+    +viewReport(): Image
 }
 
-
 class MedicalImaging {
-    - MRIImage: Image
-    - Diagnosis: String
-    - Observations: List<String>
+    +MRIImage: Image
+    +Diagnosis: String
+    +Observations: List<String>
 
-    + addImage(image: Image): void
-    + addObservation(obs: String): void
+    +addImage(image: Image): void
+    +addObservation(obs: String): void
 }
 
 class MedicationFile {
-    - Perscription: String
-    - PerscribingDoctor: List<Doctor>
-    - StartDate: Date
-    - EndDate: Date
-    - Cancelled: Boolean
+    +Perscription: String
+    +PerscribingDoctor: List<Doctor>
+    +StartDate: Date
+    +EndDate: Date
+    +Cancelled: Boolean
 
-    + cancelPerscription(): void
+    +cancelPerscription(): void
 }
 
 class Treats {
-    + diagnosePatient(patient: Patient, diagnosis: String): void
-    + prescribeMedication(patient: Patient, medication: String): void
-    + admitPatient(patient: Patient): Boolean
-    + dischargePatient(patient: Patient): void
+    +diagnosePatient(patient: Patient, diagnosis: String): void
+    +prescribeMedication(patient: Patient, medication: String): void
+    +admitPatient(patient: Patient): Boolean
+    +dischargePatient(patient: Patient): void
 }
 
 class Triages {
-    + editTriageReport(patient: Patient, updatedFile: TriageReportFile): void
-    + admitPatient(patient: Patient): Boolean
-    + updatePatientPriority(patient: Patient, priority: int): void
-    + assignPatientToQueue(patient: Patient, hospital: Hospital): void 
+    +editTriageReport(patient: Patient, updatedFile: TriageReportFile): void
+    +admitPatient(patient: Patient): Boolean
+    +updatePatientPriority(patient: Patient, priority: int): void
+    +assignPatientToQueue(patient: Patient, hospital: Hospital): void 
 }
 
 class Assists {
-    + editTriageReport(patient: Patient, updatedFile: TriageReportFile): void
-    + getPatientLocation(): String
-    + updatePatientPriority(patient: Patient, priority: int): void
+    +editTriageReport(patient: Patient, updatedFile: TriageReportFile): void
+    +getPatientLocation(): String
+    +updatePatientPriority(patient: Patient, priority: int): void
+}
+
+class Alters {
+    +editPatientFile(file: MedicalRecord): void
+    +deletePatientFile(file: MedicalRecord): void
 }
 
 MedicalRecord <|-- TriageReportFile
@@ -194,8 +197,10 @@ Staff <|-- EMT
 Staff <|-- Admin
 
 Patient "1..*" *--o "0..*" MedicalRecord
-Staff "0..*" - "0..*"MedicalRecord : Accesses
+Staff "0..*" - "0..*" MedicalRecord : Accesses
+Admin "0..*" - "0..*" MedicalRecord : Manages
 
 Hospital "1..*" - "0..*" Staff : Employs
 
+(Admin, MedicalRecord) .. Alters
 @enduml
