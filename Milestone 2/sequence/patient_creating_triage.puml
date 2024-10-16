@@ -1,0 +1,28 @@
+' Patient creating triage report
+@startuml
+actor Patient
+
+participant "Login System" as Login
+participant "Triage System" as Triage
+participant PatientFile
+participant "Online Nurse" as ON
+
+
+Patient -> Login: login(healthCareCardNumber)
+activate Login
+Login -> Patient: authenticate()
+deactivate Login
+
+Patient -> Triage: createTriageReport(symptoms)
+activate Triage
+Triage -> PatientFile: addTriageReport(SymptomList)
+activate PatientFile
+PatientFile -> ON: read(PatientSymptomsFile)
+ON->PatientFile: write(TriageReport)
+PatientFile -> Triage: return(completedTriageReport)
+deactivate PatientFile
+
+Triage-> Patient: assignPriority(priority) 
+Triage -> Patient: display(TriageReport)
+deactivate Triage
+@enduml 

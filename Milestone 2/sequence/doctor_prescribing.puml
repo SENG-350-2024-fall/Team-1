@@ -1,0 +1,33 @@
+' Doctor Prescribes Medication for Patient
+@startuml
+actor Doctor
+participant Doctor
+participant Login
+participant Hospital
+participant PatientFile
+participant Patient
+
+Doctor -> Login: login(username, password, StaffId)
+activate Login
+Login -> Doctor: autenticate()
+deactivate Login
+
+Doctor -> Hospital: popPatientFromQueue()
+activate Hospital
+Hospital -> Doctor: return(Patient)
+deactivate Hospital
+
+Doctor -> PatientFile: requestFileAccess(Patient, StaffId)
+activate PatientFile
+
+PatientFile -> Doctor: return(list<file>)
+Doctor -> PatientFile: createNewFile(diagnosis, treatment)
+PatientFile -> Patient: viewDiagnosis(file)
+deactivate PatientFile
+activate Patient
+deactivate Patient
+
+
+@enduml
+
+

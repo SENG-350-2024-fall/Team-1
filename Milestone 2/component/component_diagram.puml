@@ -1,0 +1,31 @@
+@startuml
+package "MisterED System" {
+    [GUI] as UI
+    [Triage and Queue System] as Triage
+    database "Medical Information Database" as DB
+    database "User Database" as UserDB
+    [Notification System] as Notify
+    [User Account Management] as AccountMgmt
+    [Backup and Maintenance System] as Backup
+    [First Responder Interface] as FirstResponder
+    [Authentication Service] as UserAuth
+}
+
+[BC Services Card Authentication] as PatientAuth
+[GPS Service] as GPS
+
+UI -(0- PatientAuth : "Patient login"
+UI -(0- UserAuth : "User login"
+UI -(0- Triage : "Input symptoms, view queue"
+UI -(0- AccountMgmt : "Manage accounts"
+UI -(0- Notify : "Send notifications to patients"
+Triage -(0- DB : "Store triage reports"
+Triage -(0- Notify : "Send queue updates"
+Triage -(0- FirstResponder : "Escalate emergency cases"
+FirstResponder -(0- DB : "Access patient data"
+FirstResponder -(0- GPS : "Get patient location"
+AccountMgmt -(0- UserDB : "Manage user data"
+DB -(0- Backup : "Backup medical data"
+UserDB -(0- Backup : "Backup user data"
+
+@enduml

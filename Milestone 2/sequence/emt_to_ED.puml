@@ -1,0 +1,39 @@
+' EMT takes Patient to Emergency Department
+@startuml
+actor EMT
+participant Login
+participant NotificationSystem
+participant PatientDB as Patient
+participant TriageSystemFile as TriageSystem
+participant LocationService
+participant Hospital
+
+EMT -> Login: login(username, password, StaffId)
+activate Login
+Login -> EMT: authenticate()
+deactivate Login
+
+NotificationSystem -> EMT: newPatientRequest()
+EMT -> NotificationSystem: acceptRequest(patient)
+NotificationSystem -> Patient: getPatientRecords(patient)
+activate Patient
+Patient -> EMT: sendPatientRecords(file)
+
+EMT -> TriageSystem: editTriageReport(patientReport)
+TriageSystem -> EMT: confirmReportUpdate()
+
+EMT -> LocationService: getNearestHospitalLocation(location)
+LocationService -> EMT: sendHospitalLocation(Hospital)
+
+EMT -> Hospital: admitPatient(patient)
+activate Hospital
+Hospital -> EMT: confirmAdmission()
+deactivate Hospital
+
+EMT -> Patient: removeCurrentPatient()
+Patient -> EMT: confirmPatientRemoved()
+deactivate Patient
+@enduml
+
+
+
