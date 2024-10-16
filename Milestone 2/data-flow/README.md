@@ -1,4 +1,7 @@
 # Data Flow Diagrams
+
+The wiki for the data flow models can be found [here](https://github.com/SENG-350-2024-fall/Team-1/wiki/Data-Flow-Models).
+
 These are the Data Flow Diagrams (DFDs) for the MisterED system. The DFDs illustrate how each of our five actors interacts with the system in varying levels of detail, including processes and subprocesses, external actors or entities, databases, and data flows. To view and interact with these diagrams in more detail please visit the corresponding Lucidchart links included with each textual description.
 
 For all of these Data Flow Models there are five actors included that encompass the broad user base. These diagrams will illustrate how the actors will engage with the MisterED system. The actors are as follows:

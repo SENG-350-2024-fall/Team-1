@@ -1,5 +1,8 @@
 # Level 0 Data Flow Diagram
-You can view an interactive version of the Level 0 DFD here: [Lucidchart Level 0 DFD](https://lucid.app/lucidchart/52753124-a834-4edb-8beb-e425640bbf18/edit?viewport_loc=305%2C445%2C2002%2C1182%2C0_0&invitationId=inv_087923eb-33e6-4ad2-b98c-fb21ac9298ee)
+
+The wiki for this data flow model can be found [here](https://github.com/SENG-350-2024-fall/Team-1/wiki/Data-Flow-Models#level-0-data-flow-diagram).
+
+You can view an interactive version of the Level 0 DFD at the following link: [Lucidchart Level 0 DFD](https://lucid.app/lucidchart/52753124-a834-4edb-8beb-e425640bbf18/edit?viewport_loc=305%2C445%2C2002%2C1182%2C0_0&invitationId=inv_087923eb-33e6-4ad2-b98c-fb21ac9298ee)
 
 The Level 0 DFD delves into the system's core processes, showing the flow of data within each major component of the system. We have broken the system's operations down into five major processes:
 
