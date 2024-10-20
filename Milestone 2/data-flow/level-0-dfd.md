@@ -4,6 +4,11 @@ The wiki for this data flow model can be found [here](https://github.com/SENG-35
 
 You can view an interactive version of the Level 0 DFD at the following link: [Lucidchart Level 0 DFD](https://lucid.app/lucidchart/52753124-a834-4edb-8beb-e425640bbf18/edit?viewport_loc=305%2C445%2C2002%2C1182%2C0_0&invitationId=inv_087923eb-33e6-4ad2-b98c-fb21ac9298ee)
 
+The Level 0 Data Flow Diagram for the MisterED system aims to illustrate the high-level flow of data between core processes and the external actors. The system consists of five major processes: User Authentication & Account Management, Virtual Patient Triage Management, ED & Queue Information, Patient Treatment, and System Maintenance. Each process interacts with multiple databases to ensure that data is stored, updated, and accessed securely. The Level 0 DFD demonstrates the flow of patient information, user authentication, patient treatment, user-ED interaction and queue management, and system maintenance and IT support, overall supporting the system's goals of enhancing ED resource allocation and care.
+
+![Level 0 DFD (2)](https://github.com/user-attachments/assets/e1290ac8-4463-4d78-9b17-93a53db7f7bd)
+
+## Processes
 The Level 0 DFD delves into the system's core processes, showing the flow of data within each major component of the system. We have broken the system's operations down into five major processes:
 
 **1.0 - User Authentication & Account Management**
@@ -21,5 +26,20 @@ The Level 0 DFD delves into the system's core processes, showing the flow of dat
 **5.0 - System Maintenance**
 > This process ensures that both the system and all important data is secured and taken care of. System Administrators can perform regular system updates and data backups during common downtimes. They can also provide IT Support and respond to tickets opened by users and employees, generally related to accounts or front-facing issues within the system. They can conduct audits to ensure that there is no breach of privacy or elevation of privilege taking place, and can also ensure that important data is securely encrypted and cannot be accessed by unauthorized users.
 
+## Databases
+We can also discuss the databases utilized in the Data Flow Diagrams, shown both in the Level 0 model above and the Level 1 model below. There are five different databases that send, hold, and receive data to and from the different processes. The databases and their inputs/outputs are as follows:
 
-![Level 0 DFD (2)](https://github.com/user-attachments/assets/e1290ac8-4463-4d78-9b17-93a53db7f7bd)
+**BC Service Card Database**
+> Users will be prompted to register/login with their BC Service Card via the mobile app or on their device. Verified users will then be logged in to their existing BC Service Card profile, which contains their existing health records, such as allergies and medications, operations, and immunizations. After patients have undergone a physical treatment and health records are added or updated (via the Medical Records Database), the records will be periodically synchronized to the BC Service Card Database.
+
+**Patient Personal Database**
+> Once a user is successfully logged in, the Patient Personal Database will be used to store their personal information, their account data, and their device GPS location. Personal information can contain fields such as the user's address, preferred name, phone number, and emergency contact. Account data can contain fields such as the user's email, phone number, and their name on file. The user's device GPS location can be used when fetching nearby ED locations and wait times, as well as providing the First Responders with their location should they require physical assistance.
+
+**ED Information Database**
+> This database contains information about the Emergency Departments, specifically their location, and their current queue. Patients and Employees alike can view the location of a selected ED, as well as the current wait times which are based off the total length of the queue for a given ED. Patients who have been placed in the queue as a result of their virtual triage will also be able to view their respective wait time based on their position in the queue.
+
+**Medical Records Database**
+> This is the primary repository for all patient medical records and treatment history. New medical records are created after every treatment and submitted to this database by the Doctors and Nurses, and existing records can be modified with updated information. These records are also synchronized with the BC Service Card database for other parties that use it to see.
+
+**Server/System Database**
+> This database contains the administrative and system-related data. It supports system maintenance logs, data security audits, the encryption of sensitive data, and also supports routine data backups and server updates that are pushed in a controlled manner by an Administrator. User-reported issues can also be stored here once the Administrator has handled them.
