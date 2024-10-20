@@ -1,45 +1,70 @@
-import { Grid, TextField, Button, Typography } from '@mui/material';
+import {
+  Grid2,
+  TextField,
+  Button,
+  Typography,
+  IconButton,
+} from "@mui/material";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const StaffLogin = () => {
+  const navigate = useNavigate();
+  const { setUsername, setPassword, login } = useAuth();
+
+  const handleBack = () => {
+    navigate("/home");
+  };
+
   return (
-    <Grid
+    <Grid2
       container
       direction="column"
       alignItems="center"
       justifyContent="center"
       spacing={2}
-      style={{ minHeight: '100vh' }}
+      style={{ minHeight: "100vh" }}
     >
-      <Grid item>
+      <IconButton
+        onClick={handleBack}
+        style={{
+          position: "absolute",
+          top: 16,
+          left: 16,
+          backgroundColor: "lightgray",
+        }}
+      >
+        <ArrowBackIcon />
+      </IconButton>
+      <Grid2 item>
         <Typography variant="h4" component="h1" align="center">
-         MisterED Staff Login
+          MisterED Staff Login
         </Typography>
-      </Grid>
-      <Grid item>
-        <TextField 
-          label="Username" 
-          variant="outlined" 
-          fullWidth 
-        />
-      </Grid>
-      <Grid item>
-        <TextField 
-          label="Password" 
-          type="password" 
-          variant="outlined" 
-          fullWidth 
-        />
-      </Grid>
-      <Grid item>
-        <Button 
-          variant="contained" 
-          color="primary" 
+      </Grid2>
+      <Grid2 item>
+        <TextField
+          label="Username"
+          variant="outlined"
           fullWidth
-        >
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </Grid2>
+      <Grid2 item>
+        <TextField
+          label="Password"
+          type="password"
+          variant="outlined"
+          fullWidth
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </Grid2>
+      <Grid2 item>
+        <Button variant="contained" color="primary" fullWidth onClick={login}>
           Login
         </Button>
-      </Grid>
-    </Grid>
+      </Grid2>
+    </Grid2>
   );
 };
 

@@ -1,11 +1,11 @@
-import { Grid, Button, Typography } from '@mui/material';
+import { Grid2, Button, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 
 const LandingPage = () => {
   const navigate = useNavigate(); // useNavigate hook for programmatic navigation
 
   return (
-    <Grid
+    <Grid2
       container
       direction="column"
       alignItems="center"
@@ -13,13 +13,13 @@ const LandingPage = () => {
       spacing={2}
       style={{ minHeight: '100vh' }}
     >
-      <Grid item>
+      <Grid2 item>
         <Typography variant="h4" component="h1" align="center">
-          Welcome Mister ED
+          Mister ED
         </Typography>
-      </Grid>
+      </Grid2>
       
-      <Grid item>
+      <Grid2 item>
         <Button 
           variant="contained" 
           color="primary" 
@@ -28,9 +28,9 @@ const LandingPage = () => {
         >
           Patient Login
         </Button>
-      </Grid>
+      </Grid2>
 
-      <Grid item>
+      <Grid2 item>
         <Button 
           variant="contained" 
           color="secondary" 
@@ -39,8 +39,8 @@ const LandingPage = () => {
         >
           Staff Login
         </Button>
-      </Grid>
-    </Grid>
+      </Grid2>
+    </Grid2>
   );
 };
 
