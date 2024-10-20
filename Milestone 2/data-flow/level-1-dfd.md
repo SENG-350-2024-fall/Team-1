@@ -42,11 +42,16 @@ The Level 1 Data Flow Diagram for the MisterED system expands on the core proces
  - **4.1 - Walk-In Patient Triage**
  > This subprocess allows Doctors and Nurses to triage patients who have walked into the ED without using the MisterED virtual triage beforehand. Their triage report will be generated and they will be added to the ED queue of the ED they have visited.
  - **4.2 - Patient Treatment**
- > This subprocess allows Doctors and Nurses to 
+ > This subprocess covers the physical patient treatment process that takes place once it is their turn at the ED. The Doctor or Nurse that assigns the patient to themselves and then removes them from the ED queue. They can use the patient medical information and triage report to help with their diagnosis and treatment.
  - **4.3 - Update Medical Records**
+ > This subprocess typically happens after a Doctor or Nurse has finished treating a patient. Once the treatment is finished the Doctor will be responsible for submitting the updated medical records for record keeping and informative purposes. Doctors will also be able to modify existing records with this subprocess but an existing record edit will require an Administrator approval to ensure that any change to patient medical records is necessary and accurate.
  - **4.4 - First Responder go to Patient Location**
+ > This subprocess takes place after the Online Nurse has alerted the First Responder of a patient requiring immediate medical attention. The First Responder will be able to view the patient's GPS location and indicate that they are responding to the patient. Once they have reached the patient they can begin administering field treatment until they have transported the patient to the appropriate ED.
 
 **5.0 - System Maintenance**
  - **5.1 - System Update**
+ > This subprocess allows a System Administrator to provide the system with new updates. The system updates should only be pushed and implemented during regular low-load times to minimize system unavailability and ensure that there are enough system resources to support a small load of users while updating. The system updates can include system changes, IT patches, or regularly scheduled maintenance/updates.
  - **5.2 - Data Backup**
+ > This subprocess occurs on a regular basis when an Administrator begins the task of backing up new data acquired by the system to the System Database. This can include logging IT Support tickets, backing up any modified data, or storing versions of the application and its updates.
  - **5.3 - IT Support**
+ > This subprocess allows users and employees to open IT Support tickets for any issues they are encountering with the MisterED application. They will write a description, along with the steps they took to replicate the issue or any supporting documentation they may be able to provide. The System Administrator can then assign themselves the ticket, contact the user/employee that opened the ticket to discuss it further, and implement a system fix should it be necessary for the solution. Once a ticket has been completed the Administrator can close it and log the IT Support ticket for record-keeping and previous system version purposes.
