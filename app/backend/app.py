@@ -4,7 +4,7 @@ from flask_cors import CORS  # CORS for handling Cross-Origin Resource Sharing
 import pandas as pd 
 
 # Import Classes
-import staff # Import the staff template and methods
+import app.backend.people as people # Import the staff template and methods
 
 
 # Initialize Flask application
