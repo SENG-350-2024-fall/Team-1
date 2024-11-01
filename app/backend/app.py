@@ -3,6 +3,10 @@ from flask import Flask, jsonify, request  # Flask for web framework, jsonify fo
 from flask_cors import CORS  # CORS for handling Cross-Origin Resource Sharing
 import pandas as pd 
 
+# Import Classes
+import staff # Import the staff template and methods
+
+
 # Initialize Flask application
 app = Flask(__name__)
 
