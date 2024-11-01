@@ -54,7 +54,7 @@ This ERD represents a comprehensive healthcare system focusing on patient care, 
 7. **employedAt**:
    - Between Hospital (1) and HealthcareProfessional, OnlineNurse, FirstResponder, SystemAdmin (N)
 
-## Key Points
+## Overview
 
 1. The system revolves around the Patient entity, which is central to most relationships.
 2. Healthcare professionals are categorized into distinct roles: FirstResponder, OnlineNurse, and HealthcareProfessional, each with specific responsibilities.

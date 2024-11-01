@@ -56,7 +56,7 @@ This node represents various user interfaces:
 
 User Devices connect to the Central Server via a secure external connection.
 
-## Key Relationships and Data Flows
+## Overview:
 
 1. User Authentication:
    - Patient and Staff logins authenticate against the Central Database
