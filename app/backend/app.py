@@ -3,6 +3,9 @@ from flask import Flask, jsonify, request  # Flask for web framework, jsonify fo
 from flask_cors import CORS  # CORS for handling Cross-Origin Resource Sharing
 import pandas as pd 
 import logging as log
+import os 
+
+# Set logger
 logger = log.getLogger(__name__)
 
 # Initialize Flask application
@@ -41,9 +44,8 @@ def login():
     
 
 # Ping localhost every 5 seconds to verify connection.. todo
-@app.route('/api/ping', methods=['GET'])
-def ping():
-    return jsonify({'message': ' Pasta'})
+def hearbeat():
+    hostname = ""
 
 
 def main():
