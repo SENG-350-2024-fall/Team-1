@@ -2,10 +2,8 @@
 from flask import Flask, jsonify, request  # Flask for web framework, jsonify for JSON responses, request to handle incoming data
 from flask_cors import CORS  # CORS for handling Cross-Origin Resource Sharing
 import pandas as pd 
-
-# Import Classes
-import app.backend.people as people # Import the staff template and methods
-
+import logging as log
+logger = log.getLogger(__name__)
 
 # Initialize Flask application
 app = Flask(__name__)
@@ -13,6 +11,7 @@ app = Flask(__name__)
 # Enable CORS for all routes: allows the API to be accessed from different origins
 CORS(app)
 
+# TODO: Update to contain users. PW and user will be user properties.
 df = pd.DataFrame({
     'username': ['staff123'],
     'password': ['password']
@@ -34,12 +33,27 @@ def login():
     # Check if a matching user was found
     if not user.empty:
         # If user found, return success message
+        
         return jsonify({'message': 'Login successful', 'user': username}), 200
     else:
         # If no user found, return error message
         return jsonify({'message': 'Invalid credentials'}), 401
     
 
+# Ping localhost every 5 seconds to verify connection.. todo
+@app.route('/api/ping', methods=['GET'])
+def ping():
+    return jsonify({'message': ' Pasta'})
+
+
+def main():
+    log.basicConfig(filename='log.txt', level=log.INFO)
+    logger.info('Started')
+    app.run(debug=True) # debug flag
+    log.info('Ended')
+
 # Run the application if this file is executed directly
 if __name__ == '__main__':
-    app.run(debug=True) # debug flag
+    main()
+    
+    
