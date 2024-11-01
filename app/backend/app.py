@@ -43,7 +43,7 @@ def login():
         return jsonify({'message': 'Invalid credentials'}), 401
     
 
-# Ping localhost every 5 seconds to verify connection.. todo
+# Ping localhost every 5 seconds to verify connection.. TODO. Need address to ping
 def hearbeat():
     hostname = ""
 
