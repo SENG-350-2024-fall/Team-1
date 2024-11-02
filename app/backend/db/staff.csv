@@ -1,0 +1,3 @@
+username,password,role,specialty,location
+staff123,password,Doctor,Emergency,Hospital
+Dale,password,Nurse,,Hospital
