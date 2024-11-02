@@ -7,11 +7,16 @@ from flask import Flask, jsonify, request  # Flask for web framework, jsonify fo
 from flask_cors import CORS  # CORS for handling Cross-Origin Resource Sharing
 import pandas as pd 
 import logging as log
-import csvdatabase as cdb
-#from pythonping import ping
+
 import requests
 import time
 import threading
+
+# Custom modules
+import people as ppl
+import csvdatabase as cdb
+import triage 
+import patient_queue as pq
 
 # Set logger
 logger = log.getLogger(__name__)
@@ -77,6 +82,8 @@ def main():
     heartbeat_thread = threading.Thread(target=hearbeat)
     heartbeat_thread.daemon = True  # Set as a daemon so it will be killed once the main thread is dead
     heartbeat_thread.start()
+    # Init queue:
+    patientQ = pq.PatientQueue()
     # Run app:
     app.run(debug=True) # debug flag
     log.info('Ended')
