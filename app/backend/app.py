@@ -12,7 +12,6 @@ import csvdatabase as cdb
 import requests
 import time
 import threading
-import socket 
 
 # Set logger
 logger = log.getLogger(__name__)
