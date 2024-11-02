@@ -4,7 +4,7 @@ class Staff:
     def __init__(self, name, role):
         self.name = name
         self.role = role
-    
+
 
 class Doctor(Staff):
     # Initialize
@@ -30,6 +30,9 @@ class User:
     def __init__(self, name, age):
         self.name = name
         self.age = age
+
+    def login(self):
+        print(f'This function is a placeholder for the patient/user login')
         
 # User becomes a patient when
 # a recommendation is made by MrED
@@ -39,10 +42,10 @@ class Patient(User):
         super().__init__(name, age)
         self.priority = priority
         self.triage_score = triage_score
-        if 10 <= self.triage_score <= 20: # If patient is "priority", but not "critical" by MrED diagnosis, then they must go to a hospital and get qPosition
-            self.q_pos = q_pos
+        self.q_pos = q_pos # If patient is "priority", but not "critical" by MrED diagnosis, then they must go to a hospital and get qPosition
 
     def modify_q_pos(self, q_pos):
         self.q_pos = q_pos
-    
+
+
         
