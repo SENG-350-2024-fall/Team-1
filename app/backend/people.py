@@ -4,6 +4,9 @@ class Staff:
     def __init__(self, name, role):
         self.name = name
         self.role = role
+        
+    def login(self):
+        print(f'This function is a placeholder for the staff login')
 
 
 class Doctor(Staff):
