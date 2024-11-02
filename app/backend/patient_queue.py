@@ -10,7 +10,8 @@ class Queue:
 
     # Add a patient to the queue
     def add(self, patient):
-        self.queue.append(patient) # TODO: Insert patient into queue based on triage score
+        self.queue.append(patient)  # TODO: Insert patient into queue based on triage score
+        self.update_queue_positions()
         self.notify_observers()
         # Return index of patient in the queue
         return len(self.queue) - 1
@@ -18,13 +19,19 @@ class Queue:
     # Remove a patient from the queue
     def remove(self, patient):
         self.queue.remove(patient)
+        self.update_queue_positions()
         self.notify_observers()
 
     # Add an observer to the queue
     def add_observer(self, observer):
         self.observers.append(observer)
 
-    # Notify all observers of a change in the queue -- Need QPosition in Patients in order to update.
+    # Notify all observers of a change in the queue
     def notify_observers(self):
         for observer in self.observers:
             observer.update(self.queue)
+
+    # Update queue positions for all patients: observer pattern
+    def update_queue_positions(self):
+        for index, patient in enumerate(self.queue):
+            patient.modify_q_pos(index)
