@@ -15,10 +15,18 @@ app = Flask(__name__)
 CORS(app)
 
 # TODO: Update to contain users. PW and user will be user properties.
-df = pd.DataFrame({
+# Staff usernames, passwords and other info
+s_df = pd.DataFrame({
     'username': ['staff123'],
     'password': ['password']
 })
+
+# Patient IDs and other info
+p_df = pd.DataFrame({
+    'id': ['1', '2', '3', '4']
+})
+# TODO: Ensure everywhere refers to csv db
+
 
 # Define the login route
 @app.route('/api/login', methods=['POST'])
@@ -31,7 +39,7 @@ def login():
     password = data.get('password')
     
     # Query the DataFrame for matching username and password
-    user = df[(df['username'] == username) & (df['password'] == password)]
+    user = s_df[(s_df['username'] == username) & (s_df['password'] == password)]
     
     # Check if a matching user was found
     if not user.empty:

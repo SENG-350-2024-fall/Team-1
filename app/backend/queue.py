@@ -10,8 +10,10 @@ class Queue:
 
     # Add a patient to the queue
     def add(self, patient):
-        self.queue.append(patient)
+        self.queue.append(patient) # TODO: Insert patient into queue based on triage score
         self.notify_observers()
+        # Return index of patient in the queue
+        return len(self.queue) - 1
 
     # Remove a patient from the queue
     def remove(self, patient):
