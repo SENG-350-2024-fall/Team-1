@@ -1,3 +1,5 @@
+# Note: app must be run in root/admin mode (ie: with sudo) for ping
+
 # Import necessary libraries
 from contextlib import nullcontext
 
@@ -6,7 +8,11 @@ from flask_cors import CORS  # CORS for handling Cross-Origin Resource Sharing
 import pandas as pd 
 import logging as log
 import csvdatabase as cdb
-import os
+#from pythonping import ping
+import requests
+import time
+import threading
+import socket 
 
 # Set logger
 logger = log.getLogger(__name__)
@@ -16,18 +22,6 @@ app = Flask(__name__)
 
 # Enable CORS for all routes: allows the API to be accessed from different origins
 CORS(app)
-
-# TODO: Update to contain users. PW and user will be user properties.
-# Staff usernames, passwords and other info
-s_df = pd.DataFrame({
-    'username': ['staff123'],
-    'password': ['password']
-})
-
-# Patient IDs and other info
-p_df = pd.DataFrame({
-    'id': ['1', '2', '3', '4']
-})
 
 staff_db = cdb.CSVDatabase('./db/staff.csv')
 
@@ -56,14 +50,35 @@ def login():
         return jsonify({'message': 'Invalid credentials'}), 401
     
 
-# Ping localhost every 5 seconds to verify connection.. TODO. Need address to ping
+#  Ping localhost every 5 seconds to verify connection.. 
 def hearbeat():
-    hostname = ""
+    while True:
+        url = "http://localhost:3000"  # URL of React app
+        try:
+            response = requests.get(url)
+            if response.status_code == 200:
+                logger.info(f"Ping to {url} successful: Front end up")
+            else:
+                logger.error(f"Ping to {url} failed with status code {response.status_code}. Front end likely down.")
+        except requests.ConnectionError:
+            logger.error(f"Ping to {url} failed due to connection error. Front end likely down.")
+        
+        time.sleep(5)  # Sleep for 5 seconds before the next ping
+    
 
 
 def main():
+    # Delete existing log
+    with open('log.txt', 'w'):
+        pass
+    # Set up
     log.basicConfig(filename='log.txt', level=log.INFO)
     logger.info('Started')
+    # Create and start the heartbeat thread
+    heartbeat_thread = threading.Thread(target=hearbeat)
+    heartbeat_thread.daemon = True  # Set as a daemon so it will be killed once the main thread is dead
+    heartbeat_thread.start()
+    # Run app:
     app.run(debug=True) # debug flag
     log.info('Ended')
 
