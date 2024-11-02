@@ -40,15 +40,30 @@ class User:
 # User becomes a patient when
 # a recommendation is made by MrED
 class Patient(User):
-    # Initialize
     def __init__(self, name, age, priority, triage_score, q_pos):
         super().__init__(name, age)
         self.priority = priority
         self.triage_score = triage_score
-        self.q_pos = q_pos # If patient is "priority", but not "critical" by MrED diagnosis, then they must go to a hospital and get qPosition
-
-    def modify_q_pos(self, q_pos):
         self.q_pos = q_pos
+        
+    def modify_q_pos(self, new_pos):
+        """Update the patient's position in queue"""
+        self.q_pos = new_pos
+        
+    def update(self, queue_data):
+        """
+        Receive updates about queue changes.
+        Updates patient's queue position if they're in the queue.
+        
+        Args:
+            queue_data: List of patients in current queue order
+        """
+        # Find this patient in the queue
+        for position, patient in enumerate(queue_data):
+            if patient.name == self.name:  # Using name as identifier
+                self.modify_q_pos(position)
+                break
+
 
 
         
