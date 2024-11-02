@@ -1,9 +1,12 @@
 # Import necessary libraries
+from contextlib import nullcontext
+
 from flask import Flask, jsonify, request  # Flask for web framework, jsonify for JSON responses, request to handle incoming data
 from flask_cors import CORS  # CORS for handling Cross-Origin Resource Sharing
 import pandas as pd 
 import logging as log
-import os 
+import csvdatabase as cdb
+import os
 
 # Set logger
 logger = log.getLogger(__name__)
@@ -25,8 +28,8 @@ s_df = pd.DataFrame({
 p_df = pd.DataFrame({
     'id': ['1', '2', '3', '4']
 })
-# TODO: Ensure everywhere refers to csv db
 
+staff_db = cdb.CSVDatabase('./db/staff.csv')
 
 # Define the login route
 @app.route('/api/login', methods=['POST'])
@@ -38,11 +41,13 @@ def login():
     username = data.get('username')
     password = data.get('password')
     
-    # Query the DataFrame for matching username and password
-    user = s_df[(s_df['username'] == username) & (s_df['password'] == password)]
+    # Query the Database for matching username and password
+    user = None
+    if staff_db.check_value(username) and staff_db.check_value(password):
+        user = staff_db.get_line_dic(username) # TODO: Make this more secure
     
     # Check if a matching user was found
-    if not user.empty:
+    if user:
         # If user found, return success message
         
         return jsonify({'message': 'Login successful', 'user': username}), 200

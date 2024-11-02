@@ -4,36 +4,43 @@ class CSVDatabase:
     def __init__(self, file_path):
         self.file_path = file_path
 
+    def check_value(self, search_str):
+        if self.get_line_dic(search_str) == {}:
+            return False
+        return True
+
+
     def read_all(self):
         """Reads and returns all records from the CSV file as a list of dictionaries."""
         with open(self.file_path, mode='r', newline='') as file:
             reader = csv.DictReader(file)
             return list(reader)
 
-    def read_line(self, search_str):
+
+    def get_line_num(self, search_str):
         """
-        Searches for a line containing the str in any column and returns the first matching line
-        and the corresponding line number. Ignores the header row.
+        Returns line number - 1 of row with search_str in the .csv file. Ignores header row.
+        Ex: search_str = 'Hi' is on line 3, so 2 is returned.
         """
         with open(self.file_path, mode='r', newline='') as file:
             reader = csv.DictReader(file)
             for index, row in enumerate(reader):
                 if any(search_str in str(value) for value in row.values()):
-                    return row, index
-            raise ValueError(f"'{search_str}' not found in {self.file_path}")
+                    return index
+            return -1
 
-    def get_row_num(self, search_str):
-        """
-        Returns line number - 1 of row with search_str in the .csv file. Ignores header row.
-        Ex: search_str = 'Hi' is on line 3, so 2 is returned.
-        """
-        return self.read_line(search_str)[1]
 
-    def get_row(self, search_str):
+    def get_line_dic(self, search_str):
         """
         Returns row with search_str in the .csv file. Ignores header row.
         """
-        return self.read_line(search_str)[0]
+        with open(self.file_path, mode='r', newline='') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                if any(search_str in str(value) for value in row.values()):
+                    return row
+            return {}
+
 
     def get_header_values(self, header):
         """
