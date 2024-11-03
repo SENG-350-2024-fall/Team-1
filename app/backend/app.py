@@ -91,6 +91,26 @@ def remove_patient():
         # If no user found, return error message
         return jsonify({'message': 'Invalid. Patient is not in Q'}), 401
 
+# Get patient's queue position
+@app.route('/api/get_queue_pos', methods=['POST'])
+def get_queue_pos():
+    data = request.json
+    hcn = data.get('healthCareNumber')
+
+    # Query the Database for matching HCN
+    p_db = cdb.CSVDatabase('./db/patient.csv')
+    patient = None
+    if p_db.check_value(hcn, 'hcn'):
+        patient = Patient(p_db.get_line_dic(hcn, 'hcn'))
+
+    # Check if a matching user was found
+    if patient:
+        # If user found, return success message
+        return jsonify({'message': 'Queue position found', 'queue_pos': patient.q_pos}), 200
+    else:
+        # If no user found, return error message
+        return jsonify({'message': 'Invalid. Patient is not in queue'}), 401
+
 #  Ping localhost every 5 seconds to verify connection.. 
 def heartbeat():
     while True:
