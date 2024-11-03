@@ -41,8 +41,8 @@ def login():
     
     # Query the Database for matching username and password
     user = None
-    if staff_db.check_value(username) and staff_db.check_value(password):
-        user = staff_db.get_line_dic(username) # TODO: Make this more secure
+    if staff_db.check_value(username, 'username') and staff_db.check_value(password, 'password'):
+        user = staff_db.get_line_dic(username, 'username') # TODO: Make this more secure
     
     # Check if a matching user was found
     if user:
