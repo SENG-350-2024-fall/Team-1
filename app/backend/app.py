@@ -16,7 +16,7 @@ import threading
 # Custom modules
 from people import Staff, User, Nurse, Patient
 import csvdatabase as cdb
-import triage 
+from triage import determine_priority
 import patient_queue as pq
 
 
@@ -44,7 +44,7 @@ def staff_login():
 @app.route('/api/patient_login', methods=['POST'])
 def patient_login():
     # Extract JSON data from the request and call Staff object to compute
-    u = User('placeholder', 'placeholder')
+    u = User('placeholder', 'placeholder', 'placeholder')
     return u.login(data=request.json)
 
 # Add patient to queue
