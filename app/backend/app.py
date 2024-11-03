@@ -13,7 +13,6 @@ import requests
 import time
 import threading
 
-from app.backend.triage import determine_priority
 # Custom modules
 from people import Staff, User, Nurse, Patient
 import csvdatabase as cdb

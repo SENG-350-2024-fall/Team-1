@@ -53,7 +53,8 @@ class PatientQueue:
                 insert_position = i + 1
             else:
                 break
-
+        patient.q_pos = insert_position
+        queue_db.add_line(patient)
         self.queue.insert(insert_position, patient)
         self.add_observer(patient)  # Automatically add patient as observer
         self.update_queue_positions()
@@ -72,6 +73,7 @@ class PatientQueue:
             self.remove_observer(patient)  # Remove patient from observers
             self.update_queue_positions()
             self.notify_observers()
+            queue_db.remove_str_line(patient.hcn)
 
     def add_observer(self, observer):
         """
@@ -97,8 +99,10 @@ class PatientQueue:
         """Notify all observers of queue changes"""
         for observer in self.observers:
             observer.update(self.queue)
+            queue_db.update_value(queue_db.get_line_num(observer.hcn), 'q_pos', observer.q_pos)
 
     def update_queue_positions(self):
         """Update positions for all patients in queue"""
         for index, patient in enumerate(self.queue):
             patient.modify_q_pos(index)
+            queue_db.update_value(queue_db.get_line_num(patient.hcn), 'q_pos', index)

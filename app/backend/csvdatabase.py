@@ -71,7 +71,7 @@ class CSVDatabase:
 
     def remove_str_line(self, search_str):
         """Removes a line by search_str. Ignores headers."""
-        self.remove_num_line(self.get_row_num(search_str))
+        self.remove_num_line(self.get_line_num(search_str))
 
     def update_value(self, line_number, header, new_value):
         """Updates a specific value in the CSV file by line number and column name."""
