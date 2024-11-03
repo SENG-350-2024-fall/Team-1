@@ -3,15 +3,34 @@
 # - add
 # - remove
 # - send update to observers (all patients on queue)
+import csvdatabase as cdb
 from people import Patient
 from typing import List
 import csv
 
+queue_db = cdb.CSVDatabase('./db/patient.csv')
 
 class PatientQueue:
     def __init__(self):
         self.queue = []
         self.observers = []
+
+
+    def build_queue_from_db(self):
+        """
+        Build queue and observers from queue database
+        """
+        queue = []
+        observer = []
+
+        for p in queue_db.read_all():
+            patient = Patient(p_info=p)
+            queue.insert(patient.q_pos, patient)
+            observer.append(patient)
+
+        self.queue = queue
+        self.observers = observer
+
 
     def add(self, patient):
         """
@@ -34,7 +53,7 @@ class PatientQueue:
                 insert_position = i + 1
             else:
                 break
-                
+
         self.queue.insert(insert_position, patient)
         self.add_observer(patient)  # Automatically add patient as observer
         self.update_queue_positions()

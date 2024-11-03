@@ -1,10 +1,12 @@
 import csv
-
+# CSV Database class
+# Used to interact with CSV files like they are a database
 class CSVDatabase:
     def __init__(self, file_path):
         self.file_path = file_path
 
     def check_value(self, search_str, header):
+        """Checks if a value exists under a given header."""
         if self.get_line_dic(search_str, header) == {}:
             return False
         return True

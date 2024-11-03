@@ -2,6 +2,7 @@
 
 # Import necessary libraries
 from contextlib import nullcontext
+#from crypt import methods <-- Do not use! Not supported on Windows
 
 from flask import Flask, jsonify, request  # Flask for web framework, jsonify for JSON responses, request to handle incoming data
 from flask_cors import CORS  # CORS for handling Cross-Origin Resource Sharing
@@ -12,11 +13,13 @@ import requests
 import time
 import threading
 
+from app.backend.triage import determine_priority
 # Custom modules
-import people as ppl
+from people import Staff, User, Nurse, Patient
 import csvdatabase as cdb
 import triage 
 import patient_queue as pq
+
 
 # Set logger
 logger = log.getLogger(__name__)
@@ -27,35 +30,70 @@ app = Flask(__name__)
 # Enable CORS for all routes: allows the API to be accessed from different origins
 CORS(app)
 
-staff_db = cdb.CSVDatabase('./db/staff.csv')
+# Init queue:
+patientQ = pq.PatientQueue()
+patientQ.build_queue_from_db()
 
 # Define the login route
 @app.route('/api/login', methods=['POST'])
-def login():
-    # Extract JSON data from the request
+def staff_login():
+    # Extract JSON data from the request and call Staff object to compute
+    s = Staff('placeholder', 'placeholder')
+    return s.login(data=request.json)
+
+# Handle Patient User login
+@app.route('/api/patient_login', methods=['POST'])
+def patient_login():
+    # Extract JSON data from the request and call Staff object to compute
+    u = User('placeholder', 'placeholder')
+    return u.login(data=request.json)
+
+# Add patient to queue
+@app.route('/api/add_patient', methods=['POST'])
+def add_patient():
     data = request.json
-    
-    # Get username and password from the request data
-    username = data.get('username')
-    password = data.get('password')
-    
-    # Query the Database for matching username and password
-    user = None
-    if staff_db.check_value(username, 'username') and staff_db.check_value(password, 'password'):
-        user = staff_db.get_line_dic(username, 'username') # TODO: Make this more secure
-    
+    hcn = data.get('healthCareNumber')
+    triage_score = data.get('triageScore')
+    priority = determine_priority(triage_score(float))
+
+    # Query the Database for matching HCN
+    u_db = cdb.CSVDatabase('./db/user.csv')
+    patient = None
+    if u_db.check_value(hcn, 'hcn'):
+        p_info = u_db.get_line_dic(hcn, 'hcn')
+        patient = Patient(hcn=hcn, name=p_info.get('name'), age=p_info.get('age'), priority=priority, triage_score=triage_score, q_pos=-1)
+
     # Check if a matching user was found
-    if user:
+    if patient:
         # If user found, return success message
-        
-        return jsonify({'message': 'Login successful', 'user': username}), 200
+        patientQ.add(patient)
+        return jsonify({'message': 'Addition to queue was successful', 'user': hcn}), 200
     else:
         # If no user found, return error message
-        return jsonify({'message': 'Invalid credentials'}), 401
-    
+        return jsonify({'message': 'Invalid. Patient does not exist'}), 401
+
+@app.route('/api/remove_patient', methods=['POST'])
+def remove_patient():
+    data = request.json
+    hcn = data.get('healthCareNumber')
+
+    # Query the Database for matching HCN
+    p_db = cdb.CSVDatabase('./db/patient.csv')
+    patient = None
+    if p_db.check_value(hcn, 'hcn'):
+        patient = Patient(p_db.get_line_dic(hcn, 'hcn'))
+
+    # Check if a matching user was found
+    if patient:
+        # If user found, return success message
+        patientQ.remove(patient)
+        return jsonify({'message': 'Removal successful', 'user': hcn}), 200
+    else:
+        # If no user found, return error message
+        return jsonify({'message': 'Invalid. Patient is not in Q'}), 401
 
 #  Ping localhost every 5 seconds to verify connection.. 
-def hearbeat():
+def heartbeat():
     while True:
         url = "http://localhost:3000"  # URL of React app
         try:
@@ -79,11 +117,10 @@ def main():
     log.basicConfig(filename='log.txt', level=log.INFO)
     logger.info('Started')
     # Create and start the heartbeat thread
-    heartbeat_thread = threading.Thread(target=hearbeat)
+    heartbeat_thread = threading.Thread(target=heartbeat)
     heartbeat_thread.daemon = True  # Set as a daemon so it will be killed once the main thread is dead
     heartbeat_thread.start()
-    # Init queue:
-    patientQ = pq.PatientQueue()
+
     # Run app:
     app.run(debug=True) # debug flag
     log.info('Ended')
