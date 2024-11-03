@@ -34,7 +34,7 @@ class Staff:
 
 class Doctor(Staff):
     # Initialize
-    def __init__(self, name, role, specialty):
+    def __init__(self, name, role, specialty, location):
         super().__init__(name, role)
         self.specialty = specialty
     
