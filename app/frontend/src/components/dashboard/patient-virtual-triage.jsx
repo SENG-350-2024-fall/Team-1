@@ -1,10 +1,7 @@
 import * as React from "react";
-import Paper from "@mui/material/Paper";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -13,7 +10,6 @@ import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 import TextField from "@mui/material/TextField";
-import { spacing } from "@mui/system";
 import Button from "@mui/material/Button";
 
 const ITEM_HEIGHT = 48;
@@ -70,7 +66,7 @@ const PatientVirtualTriageReport = () => {
   return (
     <div>
       <Stack>
-        <Item> Virtual Triage Report </Item>
+        <Item> Virtual Triage Form </Item>
         <Divider />
         <Item2 sx={{ pt: 6 }}> Select Symptoms from the List below </Item2>
 

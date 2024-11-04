@@ -13,7 +13,7 @@ queue_db = cdb.CSVDatabase('./db/patient.csv')
 class PatientQueue:
     def __init__(self):
         self.queue = []
-        self.observers = []
+        self.observers = []  # Observer Design Pattern
 
 
     def build_queue_from_db(self):

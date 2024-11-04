@@ -29,7 +29,7 @@ app = Flask(__name__)
 # Enable CORS for all routes: allows the API to be accessed from different origins
 CORS(app)
 
-# Init queue:
+# Init queue - Singleton Design Pattern:
 patientQ = pq.PatientQueue()
 patientQ.build_queue_from_db()
 
