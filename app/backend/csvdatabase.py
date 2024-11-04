@@ -1,11 +1,13 @@
 import csv
-
+# CSV Database class
+# Used to interact with CSV files like they are a database
 class CSVDatabase:
     def __init__(self, file_path):
         self.file_path = file_path
 
-    def check_value(self, search_str):
-        if self.get_line_dic(search_str) == {}:
+    def check_value(self, search_str, header):
+        """Checks if a value exists under a given header."""
+        if self.get_line_dic(search_str, header) == {}:
             return False
         return True
 
@@ -30,14 +32,14 @@ class CSVDatabase:
             return -1
 
 
-    def get_line_dic(self, search_str):
+    def get_line_dic(self, search_str, header):
         """
         Returns row with search_str in the .csv file. Ignores header row.
         """
         with open(self.file_path, mode='r', newline='') as file:
             reader = csv.DictReader(file)
             for row in reader:
-                if any(search_str in str(value) for value in row.values()):
+                if row[header] == search_str:
                     return row
             return {}
 
@@ -69,7 +71,7 @@ class CSVDatabase:
 
     def remove_str_line(self, search_str):
         """Removes a line by search_str. Ignores headers."""
-        self.remove_num_line(self.get_row_num(search_str))
+        self.remove_num_line(self.get_line_num(search_str))
 
     def update_value(self, line_number, header, new_value):
         """Updates a specific value in the CSV file by line number and column name."""

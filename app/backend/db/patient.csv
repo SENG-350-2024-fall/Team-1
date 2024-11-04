@@ -1,1 +1,4 @@
-id,age,priority,triage_score,q_pos,observer
+hcn,name,age,priority,triage_score,q_pos
+1,patient1,22,low,9,3
+2,patient2,54,moderate,15,2
+3,patient3,78,critical,25,1
