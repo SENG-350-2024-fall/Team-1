@@ -25,7 +25,7 @@ class PatientQueue:
 
         for p in queue_db.read_all():
             patient = Patient(p_info=p)
-            queue.insert(patient.q_pos, patient)
+            queue.insert(int(patient.q_pos), patient)
             observer.append(patient)
 
         self.queue = queue
