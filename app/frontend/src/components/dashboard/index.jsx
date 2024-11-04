@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Box, Typography, Button, Paper, Tabs, Tab } from '@mui/material';
 import { useAuth } from '../../context/AuthContext';
+import PatientVirtualTriageReport from './patient-virtual-triage';
 
 const Dashboard = () => {
   const { logout, userType } = useAuth();
@@ -34,7 +35,8 @@ const Dashboard = () => {
               <Typography variant="h5" component="h2" align="center">Medical Records Page</Typography>
             )}
             {value === 2 && (
-              <Typography variant="h5" component="h2" align="center">Billing Page</Typography>
+              // <Typography variant="h5" component="h2" align="center">Virtual Triage Page</Typography>
+              <PatientVirtualTriageReport />
             )}
           </>
         )}
@@ -66,7 +68,7 @@ const Dashboard = () => {
     ? [
         <Tab key="appointments" label="Appointments" />,
         <Tab key="medical-records" label="Medical Records" />,
-        <Tab key="billing" label="Billing" />
+        <Tab key="virtual-triage" label="Virtual Triage" />
       ]
     : [
         <Tab key="shift-schedule" label="Shift Schedule" />,
