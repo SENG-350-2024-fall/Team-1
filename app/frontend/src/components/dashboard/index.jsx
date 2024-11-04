@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Box, Typography, Button, Paper, Tabs, Tab } from '@mui/material';
 import { useAuth } from '../../context/AuthContext';
 
-const Dashboard = ({ userType = 'staff' }) => {
-  const { logout } = useAuth();
-
-  const [value, setValue] = React.useState(0);
+const Dashboard = () => {
+  const { logout, userType } = useAuth();
+  const [value, setValue] = useState(0);
 
   return (
     <Box style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>

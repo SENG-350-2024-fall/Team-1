@@ -11,7 +11,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const StaffLogin = () => {
   const navigate = useNavigate();
-  const { setUsername, setPassword, login } = useAuth();
+  const { setUsername, setPassword, staffLogin } = useAuth();
 
   const handleBack = () => {
     navigate("/home");
@@ -60,7 +60,7 @@ const StaffLogin = () => {
         />
       </Grid2>
       <Grid2 item>
-        <Button variant="contained" color="primary" fullWidth onClick={login}>
+        <Button variant="contained" color="primary" fullWidth onClick={staffLogin}>
           Login
         </Button>
       </Grid2>

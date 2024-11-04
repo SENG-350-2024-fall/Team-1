@@ -7,11 +7,13 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userType, setUserType] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [healthCareNumber, setHealthCareNumber] = useState("");
   const navigate = useNavigate();
 
-  const login = async () => {
+  const staffLogin = async () => {
     try {
       const response = await fetch("http://localhost:5000/api/login", {
         method: "POST",
@@ -23,21 +25,55 @@ export const AuthProvider = ({ children }) => {
 
       if (response.ok) {
         setIsAuthenticated(true);
-        navigate("/")
+        setUserType("staff");
+        navigate("/");
       }
     } catch (error) {
       console.error("Login failed:", error);
     }
+    setUsername("");
+    setPassword("");
+  };
+
+  const patientLogin = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/patient_login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ healthCareNumber }),
+      });
+
+      if (response.ok) {
+        setIsAuthenticated(true);
+        setUserType("patient");
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+    setHealthCareNumber("");
   };
 
   const logout = () => {
     setIsAuthenticated(false);
-    navigate("/home")
+    navigate("/home");
+    setUserType("");
   };
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, login, logout, setUsername, setPassword }}
+      value={{
+        isAuthenticated,
+        staffLogin,
+        patientLogin,
+        logout,
+        setUsername,
+        setPassword,
+        setHealthCareNumber,
+        userType
+      }}
     >
       {children}
     </AuthContext.Provider>
