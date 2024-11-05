@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   const [healthCareNumber, setHealthCareNumber] = useState("");
   const navigate = useNavigate();
 
-  const staffLogin = async () => {
+  const staffLogin = async () => { // Exception Handling Architectural Tactic
     try {
       const response = await fetch("http://localhost:5000/api/login", {
         method: "POST",
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
     setPassword("");
   };
 
-  const patientLogin = async () => {
+  const patientLogin = async () => { // Exception Detection Architectural Tactic
     try {
       const response = await fetch("http://localhost:5000/api/patient_login", {
         method: "POST",

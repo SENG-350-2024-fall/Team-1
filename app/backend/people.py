@@ -31,7 +31,7 @@ class Staff:
             # If no user found, return error message
             return jsonify({'message': 'Invalid credentials'}), 401
 
-
+# Template Design Pattern
 class Doctor(Staff):
     # Initialize
     def __init__(self, name, role, specialty, location):

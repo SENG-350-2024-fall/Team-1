@@ -64,7 +64,7 @@ const Dashboard = () => {
   textColor="primary"
   
 >
-  {userType === 'patient' 
+  {userType === 'patient' /* Role-Based Conditional Rendering Design Pattern */
     ? [
         <Tab key="appointments" label="Appointments" />,
         <Tab key="medical-records" label="Medical Records" />,
