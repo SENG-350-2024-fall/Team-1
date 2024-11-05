@@ -18,9 +18,11 @@ export const AuthProvider = ({ children }) => {
     
     // Determine the endpoint and body based on userType
     if (userType === "staff") { // The login function acts as a facade for the different login endpoints
+      if (!credentials.username || !credentials.password) return; // Exception prevention
       endpoint = "http://localhost:5000/api/login";
       body = JSON.stringify({ username: credentials.username, password: credentials.password });
     } else if (userType === "patient") {
+      if (!credentials.healthCareNumber) return; // Exception prevention
       endpoint = "http://localhost:5000/api/patient_login";
       body = JSON.stringify({ healthCareNumber: credentials.healthCareNumber });
     }
