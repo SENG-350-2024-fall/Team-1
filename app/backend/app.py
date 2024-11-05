@@ -51,9 +51,9 @@ def patient_login():
 @app.route('/api/add_patient', methods=['POST'])
 def add_patient():
     data = request.json
-    hcn = data.get('healthCareNumber')
+    hcn = str(data.get('healthCareNumber'))
     triage_score = data.get('triageScore')
-    priority = determine_priority(triage_score(float))
+    priority = determine_priority(int(triage_score))
 
     # Query the Database for matching HCN
     u_db = cdb.CSVDatabase('./db/user.csv')
@@ -61,7 +61,6 @@ def add_patient():
     if u_db.check_value(hcn, 'hcn'):
         p_info = u_db.get_line_dic(hcn, 'hcn')
         patient = Patient(hcn=hcn, name=p_info.get('name'), age=p_info.get('age'), priority=priority, triage_score=triage_score, q_pos=-1)
-
     # Check if a matching user was found
     if patient:
         # If user found, return success message
@@ -133,8 +132,15 @@ def main():
     with open('log.txt', 'w'):
         pass
     # Set up
-    log.basicConfig(filename='log.txt', level=log.INFO)
-    logger.info('Started')
+    log.basicConfig(
+    level=log.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        log.FileHandler("log.txt"),
+        log.StreamHandler()  # This logs to the console
+    ]
+    )
+
     # Create and start the heartbeat thread
     heartbeat_thread = threading.Thread(target=heartbeat)
     heartbeat_thread.daemon = True  # Set as a daemon so it will be killed once the main thread is dead

@@ -49,15 +49,17 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(true);
         setUserType("patient");
         navigate("/");
+      } else {
+        setHealthCareNumber("");
       }
     } catch (error) {
       console.error("Login failed:", error);
     }
-    setHealthCareNumber("");
   };
 
   const logout = () => {
     setIsAuthenticated(false);
+    setHealthCareNumber("");
     navigate("/home");
     setUserType("");
   };
@@ -72,7 +74,10 @@ export const AuthProvider = ({ children }) => {
         setUsername,
         setPassword,
         setHealthCareNumber,
-        userType
+        healthCareNumber,
+        userType,
+        username,
+        password,
       }}
     >
       {children}

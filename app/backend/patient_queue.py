@@ -49,12 +49,12 @@ class PatientQueue:
             if patient.priority == "critical" and existing_patient.priority != "critical":
                 break
             # Then sort by triage score
-            elif patient.triage_score <= existing_patient.triage_score:
+            elif int(patient.triage_score) >= int(existing_patient.triage_score):
                 insert_position = i + 1
             else:
                 break
         patient.q_pos = insert_position
-        queue_db.add_line(patient)
+        queue_db.add_line({'hcn': patient.hcn, 'name': patient.name, 'age': patient.age, 'priority': patient.priority, 'triage_score': patient.triage_score, 'q_pos': patient.q_pos})
         self.queue.insert(insert_position, patient)
         self.add_observer(patient)  # Automatically add patient as observer
         self.update_queue_positions()
