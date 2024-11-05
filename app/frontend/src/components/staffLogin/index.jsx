@@ -11,7 +11,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const StaffLogin = () => {
   const navigate = useNavigate();
-  const { setUsername, setPassword, staffLogin, username, password } = useAuth();
+  const { setUsername, setPassword, login, username, password } = useAuth();
 
   const handleBack = () => {
     navigate("/home");
@@ -67,7 +67,7 @@ const StaffLogin = () => {
           color="primary"
           fullWidth
           onClick={() => {
-            staffLogin();
+            login("staff", { username, password });
             setPassword("");
             setUsername("");
           }}

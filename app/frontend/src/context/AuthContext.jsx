@@ -13,47 +13,42 @@ export const AuthProvider = ({ children }) => {
   const [healthCareNumber, setHealthCareNumber] = useState("");
   const navigate = useNavigate();
 
-  const staffLogin = async () => { // Exception Handling Architectural Tactic
-    try {
-      const response = await fetch("http://localhost:5000/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      if (response.ok) {
-        setIsAuthenticated(true);
-        setUserType("staff");
-        navigate("/");
-      }
-    } catch (error) {
-      console.error("Login failed:", error);
+  const login = async (userType, credentials) => { // Exception handling example
+    let endpoint, body;
+    
+    // Determine the endpoint and body based on userType
+    if (userType === "staff") { // The login function acts as a facade for the different login endpoints
+      endpoint = "http://localhost:5000/api/login";
+      body = JSON.stringify({ username: credentials.username, password: credentials.password });
+    } else if (userType === "patient") {
+      endpoint = "http://localhost:5000/api/patient_login";
+      body = JSON.stringify({ healthCareNumber: credentials.healthCareNumber });
     }
-    setUsername("");
-    setPassword("");
-  };
-
-  const patientLogin = async () => { // Exception Detection Architectural Tactic
+  
     try {
-      const response = await fetch("http://localhost:5000/api/patient_login", {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ healthCareNumber }),
+        body,
       });
-
+  
       if (response.ok) {
         setIsAuthenticated(true);
-        setUserType("patient");
+        setUserType(userType);
         navigate("/");
-      } else {
+      } else if (userType === "patient") {
         setHealthCareNumber("");
       }
     } catch (error) {
       console.error("Login failed:", error);
+    }
+  
+    // Clear credentials
+    if (userType === "staff") {
+      setUsername("");
+      setPassword("");
     }
   };
 
@@ -68,8 +63,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         isAuthenticated,
-        staffLogin,
-        patientLogin,
+        login,
         logout,
         setUsername,
         setPassword,

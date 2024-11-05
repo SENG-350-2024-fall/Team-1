@@ -7,7 +7,6 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import IconButton from "@mui/material/IconButton";
 import { Button, Chip, Collapse } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
-import Box from "@mui/material/Box";
 
 const getColor = (score) => {
   const maxScore = 20; // TODO: Adjust this value based on the maximum possible score

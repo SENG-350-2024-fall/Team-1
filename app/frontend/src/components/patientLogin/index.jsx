@@ -11,7 +11,7 @@ import { useAuth } from "../../context/AuthContext";
 
 const PatientLogin = () => {
   const navigate = useNavigate();
-  const { setHealthCareNumber, patientLogin } = useAuth();
+  const { healthCareNumber, setHealthCareNumber, login } = useAuth();
 
   const handleBack = () => {
     navigate("/home");
@@ -52,7 +52,7 @@ const PatientLogin = () => {
         />
       </Grid2>
       <Grid2 item>
-        <Button variant="contained" color="primary" fullWidth onClick={patientLogin}>
+        <Button variant="contained" color="primary" fullWidth onClick={() => login("patient", { healthCareNumber })}>
           Login
         </Button>
       </Grid2>
