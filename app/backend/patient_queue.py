@@ -1,4 +1,4 @@
-# Queue Class for the backend
+# Singleton Queue Class for the backend
 # Contains interface for the queue:
 # - add
 # - remove
@@ -15,6 +15,15 @@ class PatientQueue:
         self.queue = []
         self.observers = []  # Observer Design Pattern
 
+    def __new__(cls): 
+        """
+        Creation to ensforce singleton pattern
+        """
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._instance.queue = []
+            cls._instance.observers = []
+        return cls._instance
 
     def build_queue_from_db(self):
         """
@@ -30,7 +39,6 @@ class PatientQueue:
 
         self.queue = queue
         self.observers = observer
-
 
     def add(self, patient):
         """
