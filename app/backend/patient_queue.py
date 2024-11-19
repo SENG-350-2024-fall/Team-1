@@ -1,4 +1,4 @@
-# Singleton Queue Class for the backend
+# Queue Class for the backend
 # Contains interface for the queue:
 # - add
 # - remove
@@ -11,14 +11,9 @@ import csv
 queue_db = cdb.CSVDatabase('./db/patient.csv')
 
 class PatientQueue:
-    def __init__(self):
-        self.queue = []
-        self.observers = []  # Observer Design Pattern
+    _instance = None
 
-    def __new__(cls): 
-        """
-        Creation to ensforce singleton pattern
-        """
+    def __new__(cls):
         if cls._instance is None:
             cls._instance = super().__new__(cls)
             cls._instance.queue = []
@@ -34,7 +29,7 @@ class PatientQueue:
 
         for p in queue_db.read_all():
             patient = Patient(p_info=p)
-            queue.insert(int(patient.q_pos), patient)
+            queue.insert(patient.q_pos, patient)
             observer.append(patient)
 
         self.queue = queue
@@ -57,12 +52,12 @@ class PatientQueue:
             if patient.priority == "critical" and existing_patient.priority != "critical":
                 break
             # Then sort by triage score
-            elif int(patient.triage_score) >= int(existing_patient.triage_score):
+            elif patient.triage_score <= existing_patient.triage_score:
                 insert_position = i + 1
             else:
                 break
         patient.q_pos = insert_position
-        queue_db.add_line({'hcn': patient.hcn, 'name': patient.name, 'age': patient.age, 'priority': patient.priority, 'triage_score': patient.triage_score, 'q_pos': patient.q_pos})
+        queue_db.add_line(patient)
         self.queue.insert(insert_position, patient)
         self.add_observer(patient)  # Automatically add patient as observer
         self.update_queue_positions()
