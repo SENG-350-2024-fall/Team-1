@@ -1,4 +1,4 @@
-# Queue Class for the backend
+# Singleton Queue Class for the backend
 # Contains interface for the queue:
 # - add
 # - remove
@@ -11,10 +11,17 @@ import csv
 queue_db = cdb.CSVDatabase('./db/patient.csv')
 
 class PatientQueue:
-    def __init__(self):
-        self.queue = []
-        self.observers = []
+    _instance = None # Instance to denote singleton
 
+    def __new__(cls): 
+        """
+        Creation to ensforce singleton pattern
+        """
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._instance.queue = []
+            cls._instance.observers = []
+        return cls._instance
 
     def build_queue_from_db(self):
         """
@@ -30,7 +37,6 @@ class PatientQueue:
 
         self.queue = queue
         self.observers = observer
-
 
     def add(self, patient):
         """
