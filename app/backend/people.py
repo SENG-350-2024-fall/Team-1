@@ -103,6 +103,11 @@ class Patient(User):
             self.triage_score = p_info.get('triage_score')
             self.q_pos = p_info.get('q_pos')
 
+    def to_dict(self):
+        """Returns Patient as dictionary"""
+        return {'hcn' : self.hcn, 'name' : self.name, 'age' : self.age, 'priority' : self.priority, 'triage_score' : self.triage_score, 'q_pos' : self.q_pos}
+
+
     def modify_q_pos(self, new_pos):
         """Update the patient's position in queue"""
         self.q_pos = new_pos

@@ -43,7 +43,7 @@ def staff_login():
 # Handle Patient User login
 @app.route('/api/patient_login', methods=['POST'])
 def patient_login():
-    # Extract JSON data from the request and call Staff object to compute
+    # Extract JSON data from the request and call Patient object to compute
     u = User('placeholder', 'placeholder', 'placeholder')
     return u.login(data=request.json)
 
@@ -52,7 +52,7 @@ def patient_login():
 def add_patient():
     data = request.json
     hcn = str(data.get('healthCareNumber'))
-    triage_score = data.get('triageScore')
+    triage_score = str(data.get('triageScore'))
     priority = determine_priority(int(triage_score))
 
     # Query the Database for matching HCN
@@ -60,7 +60,7 @@ def add_patient():
     patient = None
     if u_db.check_value(hcn, 'hcn'):
         p_info = u_db.get_line_dic(hcn, 'hcn')
-        patient = Patient(hcn=hcn, name=p_info.get('name'), age=p_info.get('age'), priority=priority, triage_score=triage_score, q_pos=-1)
+        patient = Patient(hcn=hcn, name=p_info.get('name'), age=p_info.get('age'), priority=priority, triage_score=triage_score, q_pos="-1")
     # Check if a matching user was found
     if patient:
         # If user found, return success message

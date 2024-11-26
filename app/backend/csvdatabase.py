@@ -57,7 +57,7 @@ class CSVDatabase:
     def add_line(self, data):
         """Appends a new line to the CSV file. Data should be a dictionary matching the header names."""
         with open(self.file_path, mode='a', newline='') as file:
-            writer = csv.DictWriter(file, fieldnames=data.keys())
+            writer = csv.DictWriter(file, fieldnames=list(data.keys()))
             writer.writerow(data)
 
     def remove_num_line(self, line_number):

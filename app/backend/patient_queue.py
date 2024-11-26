@@ -57,7 +57,7 @@ class PatientQueue:
             else:
                 break
         patient.q_pos = insert_position
-        queue_db.add_line(patient)
+        queue_db.add_line(patient.to_dict())
         self.queue.insert(insert_position, patient)
         self.add_observer(patient)  # Automatically add patient as observer
         self.update_queue_positions()
