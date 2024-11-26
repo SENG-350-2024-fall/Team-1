@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Box, Typography, Button, Paper, Tabs, Tab } from '@mui/material';
 import { useAuth } from '../../context/AuthContext';
+import PatientVirtualTriageReport from './patient/patientVirtualTriage';
+import AssignedPatients from './staff/assignedPatients';
 
-const Dashboard = ({ userType = 'staff' }) => {
-  const { logout } = useAuth();
-
-  const [value, setValue] = React.useState(0);
+const Dashboard = () => {
+  const { logout, userType } = useAuth();
+  const [value, setValue] = useState(0);
 
   return (
     <Box style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -35,7 +36,7 @@ const Dashboard = ({ userType = 'staff' }) => {
               <Typography variant="h5" component="h2" align="center">Medical Records Page</Typography>
             )}
             {value === 2 && (
-              <Typography variant="h5" component="h2" align="center">Billing Page</Typography>
+              <PatientVirtualTriageReport />
             )}
           </>
         )}
@@ -45,7 +46,7 @@ const Dashboard = ({ userType = 'staff' }) => {
               <Typography variant="h5" component="h2" align="center">Shift Schedule Page</Typography>
             )}
             {value === 1 && (
-              <Typography variant="h5" component="h2" align="center">Assigned Patients Page</Typography>
+              <AssignedPatients />
             )}
             {value === 2 && (
               <Typography variant="h5" component="h2" align="center">Reports Page</Typography>
@@ -63,11 +64,11 @@ const Dashboard = ({ userType = 'staff' }) => {
   textColor="primary"
   
 >
-  {userType === 'patient' 
+  {userType === 'patient' /* Role-Based Conditional Rendering Design Pattern */
     ? [
         <Tab key="appointments" label="Appointments" />,
         <Tab key="medical-records" label="Medical Records" />,
-        <Tab key="billing" label="Billing" />
+        <Tab key="virtual-triage" label="Virtual Triage" />
       ]
     : [
         <Tab key="shift-schedule" label="Shift Schedule" />,

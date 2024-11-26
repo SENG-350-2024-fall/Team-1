@@ -11,7 +11,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const StaffLogin = () => {
   const navigate = useNavigate();
-  const { setUsername, setPassword, login } = useAuth();
+  const { setUsername, setPassword, login, username, password } = useAuth();
 
   const handleBack = () => {
     navigate("/home");
@@ -47,6 +47,7 @@ const StaffLogin = () => {
           label="Username"
           variant="outlined"
           fullWidth
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
       </Grid2>
@@ -56,11 +57,21 @@ const StaffLogin = () => {
           type="password"
           variant="outlined"
           fullWidth
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </Grid2>
       <Grid2 item>
-        <Button variant="contained" color="primary" fullWidth onClick={login}>
+        <Button
+          variant="contained"
+          color="primary"
+          fullWidth
+          onClick={() => {
+            login("staff", { username, password });
+            setPassword("");
+            setUsername("");
+          }}
+        >
           Login
         </Button>
       </Grid2>
