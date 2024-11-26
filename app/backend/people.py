@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request  # Flask for web framework, jsonify for JSON responses, request to handle incoming data
+from flask import jsonify  # Flask for web framework, jsonify for JSON responses, request to handle incoming data
 
 
 import csvdatabase as cdb
