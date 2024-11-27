@@ -71,14 +71,12 @@ class PatientQueue:
         Args:
             patient: Patient object to be removed
         """
-        print('Hi')
         if patient in self.queue:
-            print('HERE')
             self.queue.remove(patient)
             self.remove_observer(patient)  # Remove patient from observers
             self.update_queue_positions()
             self.notify_observers()
-            queue_db.remove_str_line(patient.hcn)
+            queue_db.remove_str_line(patient.hcn, 'hcn')
 
     def add_observer(self, observer):
         """
@@ -110,4 +108,4 @@ class PatientQueue:
         """Update positions for all patients in queue"""
         for index, patient in enumerate(self.queue):
             patient.modify_q_pos(index)
-            queue_db.update_value(queue_db.get_line_num(patient.hcn), 'q_pos', index)
+            queue_db.update_value(queue_db.get_line_num(patient.hcn, 'hcn'), 'q_pos', index)

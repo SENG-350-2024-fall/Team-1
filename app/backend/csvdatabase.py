@@ -19,7 +19,7 @@ class CSVDatabase:
             return list(reader)
 
 
-    def get_line_num(self, search_str):
+    def get_line_num(self, search_str, header):
         """
         Returns line number - 1 of row with search_str in the .csv file. Ignores header row.
         Ex: search_str = 'Hi' is on line 3, so 2 is returned.
@@ -27,8 +27,10 @@ class CSVDatabase:
         with open(self.file_path, mode='r', newline='') as file:
             reader = csv.DictReader(file)
             for index, row in enumerate(reader):
-                if any(search_str in str(value) for value in row.values()):
+                print(row)
+                if row.get(header) == search_str:
                     return index
+
             return -1
 
 
@@ -69,9 +71,9 @@ class CSVDatabase:
         else:
             raise IndexError("Line number out of range.")
 
-    def remove_str_line(self, search_str):
+    def remove_str_line(self, search_str, header):
         """Removes a line by search_str. Ignores headers."""
-        self.remove_num_line(self.get_line_num(search_str))
+        self.remove_num_line(self.get_line_num(search_str, header))
 
     def update_value(self, line_number, header, new_value):
         """Updates a specific value in the CSV file by line number and column name."""

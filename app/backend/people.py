@@ -13,6 +13,9 @@ class Staff:
         self.name = name
         self.role = role
 
+    def __eq__(self, other):
+        return self.name == other.name
+
     def login(self, data):
         # Get username and password from the request data
         username = data.get('username')
