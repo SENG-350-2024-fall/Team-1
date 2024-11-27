@@ -71,7 +71,9 @@ class PatientQueue:
         Args:
             patient: Patient object to be removed
         """
+        print('Hi')
         if patient in self.queue:
+            print('HERE')
             self.queue.remove(patient)
             self.remove_observer(patient)  # Remove patient from observers
             self.update_queue_positions()

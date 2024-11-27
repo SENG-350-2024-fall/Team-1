@@ -79,12 +79,14 @@ def remove_patient():
     p_db = cdb.CSVDatabase('./db/patient.csv')
     patient = None
     if p_db.check_value(hcn, 'hcn'):
-        patient = Patient(p_db.get_line_dic(hcn, 'hcn'))
+        patient = Patient(p_info=p_db.get_line_dic(hcn, 'hcn'))
 
     # Check if a matching user was found
     if patient:
         # If user found, return success message
+        print(patientQ.queue)
         patientQ.remove(patient)
+        print(patientQ.queue)
         return jsonify({'message': 'Removal successful', 'user': hcn}), 200
     else:
         # If no user found, return error message
