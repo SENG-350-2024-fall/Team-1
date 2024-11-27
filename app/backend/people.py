@@ -60,6 +60,9 @@ class User:
         self.name = name
         self.age = age
 
+    def __eq__(self, other):
+        return self.hcn == other.hcn
+
     def login(self, data):
         # Get username and password from the request data
         hcn = data.get('healthCareNumber')
@@ -102,9 +105,6 @@ class Patient(User):
             self.priority = p_info.get('priority')
             self.triage_score = p_info.get('triage_score')
             self.q_pos = p_info.get('q_pos')
-
-    def __eq__(self, other):
-        return self.hcn == other.hcn
 
     def to_dict(self):
         """Returns Patient as dictionary"""
