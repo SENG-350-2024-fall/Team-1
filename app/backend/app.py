@@ -84,9 +84,7 @@ def remove_patient():
     # Check if a matching user was found
     if patient:
         # If user found, return success message
-        print(patientQ.queue)
         patientQ.remove(patient)
-        print(patientQ.queue)
         return jsonify({'message': 'Removal successful', 'user': hcn}), 200
     else:
         # If no user found, return error message

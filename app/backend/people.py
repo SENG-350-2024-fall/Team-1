@@ -109,6 +109,22 @@ class Patient(User):
             self.triage_score = p_info.get('triage_score')
             self.q_pos = p_info.get('q_pos')
 
+    def __ge__(self, other):
+        """Used when comparing Patient's triage scores"""
+        return int(self.triage_score) >= int(other.triage_score)
+
+    def __gt__(self, other):
+        """Used when comparing Patient's triage scores"""
+        return int(self.triage_score) > int(other.triage_score)
+
+    def __le__(self, other):
+        """Used when comparing Patient's triage scores"""
+        return int(self.triage_score) <= int(other.triage_score)
+
+    def __lt__(self, other):
+        """Used when comparing Patient's triage scores"""
+        return int(self.triage_score) < int(other.triage_score)
+
     def to_dict(self):
         """Returns Patient as dictionary"""
         return {'hcn' : self.hcn, 'name' : self.name, 'age' : self.age, 'priority' : self.priority, 'triage_score' : self.triage_score, 'q_pos' : self.q_pos}

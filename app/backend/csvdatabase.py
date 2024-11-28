@@ -27,7 +27,6 @@ class CSVDatabase:
         with open(self.file_path, mode='r', newline='') as file:
             reader = csv.DictReader(file)
             for index, row in enumerate(reader):
-                print(row)
                 if row.get(header) == search_str:
                     return index
 
@@ -57,10 +56,14 @@ class CSVDatabase:
             return [row[header] for row in reader]
 
     def add_line(self, data):
-        """Appends a new line to the CSV file. Data should be a dictionary matching the header names."""
+        """Appends a new line to the CSV file. Data should be a dictionary matching the header names.
+           Need to make sure csv files have an empty line at the bottom
+           Ex: Bare minimum csv file is headers followed by a blank line
+        """
         with open(self.file_path, mode='a', newline='') as file:
-            writer = csv.DictWriter(file, fieldnames=list(data.keys()))
+            writer = csv.DictWriter(file, fieldnames=data.keys())
             writer.writerow(data)
+
 
     def remove_num_line(self, line_number):
         """Removes a line by line number (starting from 0 after the header) and rewrites the file."""
@@ -80,7 +83,7 @@ class CSVDatabase:
         records = self.read_all()
         if 0 <= line_number < len(records):
             if header in records[line_number]:
-                records[line_number][header] = new_value
+                records[line_number][header] = str(new_value)
                 self.write_all(records)
             else:
                 raise KeyError(f"Header '{header}' not found in {self.file_path}.")

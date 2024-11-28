@@ -72,11 +72,12 @@ class PatientQueue:
             patient: Patient object to be removed
         """
         if patient in self.queue:
+            queue_db.remove_str_line(patient.hcn, 'hcn')
             self.queue.remove(patient)
             self.remove_observer(patient)  # Remove patient from observers
             self.update_queue_positions()
             self.notify_observers()
-            queue_db.remove_str_line(patient.hcn, 'hcn')
+
 
     def add_observer(self, observer):
         """
@@ -106,6 +107,8 @@ class PatientQueue:
 
     def update_queue_positions(self):
         """Update positions for all patients in queue"""
+        # Sort queue from greatest triage score to lowest
+        self.queue.sort(reverse=True)
         for index, patient in enumerate(self.queue):
             patient.modify_q_pos(index)
             queue_db.update_value(queue_db.get_line_num(patient.hcn, 'hcn'), 'q_pos', index)
