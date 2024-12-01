@@ -45,6 +45,11 @@ class PatientQueue:
         Returns:
             int: Position where patient was inserted
         """
+        # Update patient value if they are already in queue by removing
+        # and re-adding them
+        if queue_db.check_value(patient.hcn, 'hcn'):
+            self.remove(patient)
+
         # Find insert position based on triage score and priority
         insert_position = 0
         for i, existing_patient in enumerate(self.queue):
