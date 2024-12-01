@@ -36,7 +36,7 @@ def record_symptoms():
             'message': 'Missing required fields'
         }), 400
     
-    patient_id = data['healthCareNumber']
+    patient_id = str(data.get('healthCareNumber'))
     symptoms = data['symptoms']
     
     # Record symptoms and get triage score
@@ -71,7 +71,7 @@ def record_symptoms():
     
     return jsonify(result), 400
 
-@app.route('/api/patient_symptoms/<patient_id>', methods=['GET'])
+@app.get('/api/patient_symptoms/<int:patient_id>')
 def get_patient_symptoms(patient_id):
     result = symptom_triage.get_patient_history(patient_id)
     
@@ -146,7 +146,19 @@ def remove_patient():
         }), 400
 
     hcn = data['healthCareNumber']
-    if patientQ.remove(hcn):
+
+    # Query the Database for matching HCN
+    p_db = cdb.CSVDatabase('./db/patient.csv')
+    patient = None
+    if p_db.check_value(hcn, 'hcn'):
+        patient = Patient(p_info=p_db.get_line_dic(hcn, 'hcn'))
+    else:
+        return jsonify({
+            'message': 'Patient not found in queue',
+            'success': False
+        }), 404
+
+    if patientQ.remove(patient):
         return jsonify({
             'message': 'Patient removed successfully',
             'success': True

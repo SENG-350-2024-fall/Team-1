@@ -9,6 +9,7 @@ class CSVDatabase:
         """Checks if a value exists under a given header."""
         if self.get_line_dic(search_str, header) == {}:
             return False
+
         return True
 
 

@@ -52,7 +52,7 @@ class PatientQueue:
             if patient.priority == "critical" and existing_patient.priority != "critical":
                 break
             # Then sort by triage score
-            elif patient.triage_score <= existing_patient.triage_score:
+            elif patient <= existing_patient:
                 insert_position = i + 1
             else:
                 break
@@ -77,6 +77,9 @@ class PatientQueue:
             self.remove_observer(patient)  # Remove patient from observers
             self.update_queue_positions()
             self.notify_observers()
+            return True
+
+        return False
 
 
     def add_observer(self, observer):

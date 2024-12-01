@@ -87,6 +87,13 @@ class User:
 # a recommendation is made by MrED
 class Patient(User):
 
+    priority_keys = {
+        1: 'critical',
+        2: 'moderate',
+        3: 'standard',
+        4: 'non-urgent'
+    }
+
     def __init__(self, hcn=None, name=None, age=None, priority=None, triage_score=None, q_pos=None, p_info=None):
         """
         Initializes Patient object
@@ -100,12 +107,12 @@ class Patient(User):
         """
         if p_info is None:
             super().__init__(hcn, name, age)
-            self.priority = priority
+            self.priority = self.priority_keys.get(priority)
             self.triage_score = triage_score
             self.q_pos = q_pos
         else:
             super().__init__(p_info.get('hcn'), p_info.get('name'), p_info.get('age'))
-            self.priority = p_info.get('priority')
+            self.priority = self.priority_keys.get(p_info.get('priority'))
             self.triage_score = p_info.get('triage_score')
             self.q_pos = p_info.get('q_pos')
 
@@ -127,7 +134,7 @@ class Patient(User):
 
     def to_dict(self):
         """Returns Patient as dictionary"""
-        return {'hcn' : self.hcn, 'name' : self.name, 'age' : self.age, 'priority' : self.priority, 'triage_score' : self.triage_score, 'q_pos' : self.q_pos}
+        return {'hcn' : str(self.hcn), 'name' : str(self.name), 'age' : str(self.age), 'priority' : str(self.priority), 'triage_score' : str(self.triage_score), 'q_pos' : str(self.q_pos)}
 
 
     def modify_q_pos(self, new_pos):

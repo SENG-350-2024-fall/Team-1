@@ -45,15 +45,13 @@ class SymptomTriage:
             int: Priority level (1-5, where 1 is highest priority)
         """
         if triage_score >= 25:
-            return 1  # Immediate attention needed
+            return 1  # critical - Immediate attention needed
         elif triage_score >= 15:
-            return 2  # Very urgent
-        elif triage_score >= 10:
-            return 3  # Urgent
+            return 2  # moderate
         elif triage_score >= 5:
-            return 4  # Standard
+            return 3  # standard
         else:
-            return 5  # Non-urgent
+            return 4  # non-urgent
 
     def record_symptoms(self, patient_id, symptoms_list):
         """
@@ -114,7 +112,7 @@ class SymptomTriage:
                 'priority': None
             }
             
-def get_patient_history(self, patient_id):
+    def get_patient_history(self, patient_id):
         """
         Retrieve symptom history for a specific patient
         
