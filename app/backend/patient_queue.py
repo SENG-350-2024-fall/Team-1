@@ -60,8 +60,8 @@ class PatientQueue:
         queue_db.add_line(patient.to_dict())
         self.queue.insert(insert_position, patient)
         self.add_observer(patient)  # Automatically add patient as observer
-        self.update_queue_positions()
-        self.notify_observers()
+        self.update_queue_positions() # Why are we updating queue positions?
+        self.notify_observers() 
         return insert_position
 
     def remove(self, patient):
