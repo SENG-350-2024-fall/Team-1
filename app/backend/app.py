@@ -145,8 +145,7 @@ def remove_patient():
             'success': False
         }), 400
 
-    hcn = data['healthCareNumber']
-
+    hcn = str(data['healthCareNumber'])
     # Query the Database for matching HCN
     p_db = cdb.CSVDatabase('./db/patient.csv')
     patient = None

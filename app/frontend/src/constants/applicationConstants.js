@@ -1,14 +1,14 @@
 export const symptoms = [
-  { symptom: "Coughing", score: 2 },
-  { symptom: "Headache", score: 2 },
-  { symptom: "Vomiting/Nausea", score: 5 },
-  { symptom: "Chest Pain", score: 10 },
-  { symptom: "Limb Numbness", score: 15 },
-  { symptom: "Vision Impacted", score: 5 },
-  { symptom: "Hearing Impacted", score: 3 },
-  { symptom: "Shortness of Breath", score: 15 },
-  { symptom: "Fever", score: 8 },
-  { symptom: "Fatigue", score: 2 },
+  { symptom: "Coughing" },
+  { symptom: "Headache" },
+  { symptom: "Vomiting/Nausea" },
+  { symptom: "Chest Pain" },
+  { symptom: "Limb Numbness" },
+  { symptom: "Vision Impacted" },
+  { symptom: "Hearing Impacted" },
+  { symptom: "Shortness of Breath" },
+  { symptom: "Fever" },
+  { symptom: "Fatigue" },
 ];
 
 export const patients = [

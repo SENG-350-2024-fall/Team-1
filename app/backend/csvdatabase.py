@@ -41,6 +41,7 @@ class CSVDatabase:
         with open(self.file_path, mode='r', newline='') as file:
             reader = csv.DictReader(file)
             for row in reader:
+                print(search_str, row[header])
                 if row[header] == search_str:
                     return row
             return {}

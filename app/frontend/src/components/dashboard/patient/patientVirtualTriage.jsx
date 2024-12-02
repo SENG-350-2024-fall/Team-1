@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -26,7 +26,6 @@ const MenuProps = {
 
 const PatientVirtualTriageReport = () => {
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
-  const [patientTriageScore, setPatientTriageScore] = useState(0);
   const { healthCareNumber } = useAuth();
 
   const handleChange = (event) => {
@@ -36,20 +35,35 @@ const PatientVirtualTriageReport = () => {
     setSelectedSymptoms(typeof value === "string" ? value.split(",") : value);
   };
 
-  useEffect(() => {
-    let score = 0;
-    selectedSymptoms.forEach((symptom) => {
-      const foundSymptom = symptoms.find((s) => s.symptom === symptom);
-      if (foundSymptom) {
-        score += foundSymptom.score;
-      }
-    });
-    setPatientTriageScore(score);
-  }, [selectedSymptoms]);
-
   const onSubmitHandler = async () => {
     if (!selectedSymptoms.length) return;
-    // TODO: Submit the triage report to the backend
+    const apiEndpoint = "http://localhost:5000/api/record_symptoms";
+
+    try {
+      const payload = {
+        healthCareNumber,
+        symptoms: selectedSymptoms,
+      };
+      const response = await fetch(apiEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      console.log("Response:", response);
+
+      const result = await response.json();
+
+      // Handle success or failure based on the response
+      if (response.ok && result.success) {
+        console.log("Triage report submitted successfully:", result);
+      }
+    } catch (error) {
+      console.error("Error submitting symptoms:", error);
+    }
+    setSelectedSymptoms([]);
   };
 
   return (

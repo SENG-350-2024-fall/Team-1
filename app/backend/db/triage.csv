@@ -1,2 +1,7 @@
 patient_id,timestamp,symptoms,total_score
 2,2024-12-01 02:56:42,Vomiting/Nausea|Chest Pain,15
+1,2024-12-01 11:18:14,Headache|Vomiting/Nausea,7
+3,2024-12-01 11:28:56,Chest Pain|Headache|Coughing|Shortness of Breath|Fever,37
+1,2024-12-01 18:34:26,Vomiting/Nausea|Coughing|Headache,9
+2,2024-12-01 18:34:44,Coughing|Fever|Fatigue|Shortness of Breath|Hearing Impacted|Chest Pain|Vomiting/Nausea|Headache|Limb Numbness,62
+2,2024-12-01 18:39:46,Coughing|Vomiting/Nausea,7

@@ -120,3 +120,18 @@ class PatientQueue:
         for index, patient in enumerate(self.queue):
             patient.modify_q_pos(index)
             queue_db.update_value(queue_db.get_line_num(patient.hcn, 'hcn'), 'q_pos', index)
+
+    def get_position(self, hcn):
+        """
+        Get the position of a patient in the queue
+        
+        Args:
+            hcn: Health care number of patient
+        
+        Returns:
+            int: Position of patient in queue
+        """
+        for patient in self.queue:
+            if patient.hcn == str(hcn):
+                return patient.q_pos
+        return None
